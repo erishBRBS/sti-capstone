@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Announcements</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Announcements CSS -->
+  <link rel="stylesheet" href="modules/css/announcements.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="Logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Announcements</h1>
+        <p>Create and manage announcements for students, teachers, and organizations</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="btn btn-primary" id="createAnnouncementBtn">
+          <i class="fas fa-plus"></i> Create Announcement
+        </button>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="stat-value" id="totalAnnouncements">0</div>
+          <div class="stat-label">Total Announcements</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="stat-value" id="activeAnnouncements">0</div>
+          <div class="stat-label">Active</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-thumbtack"></i>
+          </div>
+          <div class="stat-value" id="pinnedAnnouncements">0</div>
+          <div class="stat-label">Pinned</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon purple-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="stat-value" id="totalViews">0</div>
+          <div class="stat-label">Total Views</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">All Announcements</div>
+          <div class="filters">
+            <input type="text" class="search-input" id="searchAnnouncement" placeholder="Search announcements...">
+            
+            <select class="filter-select" id="filterPriority">
+              <option value="all">All Priorities</option>
+              <option value="urgent">Urgent</option>
+              <option value="high">High</option>
+              <option value="normal">Normal</option>
+              <option value="low">Low</option>
+            </select>
+            
+            <select class="filter-select" id="filterAudience">
+              <option value="all">All Audiences</option>
+              <option value="students">Students</option>
+              <option value="teachers">Teachers</option>
+              <option value="organizations">Organizations</option>
+              <option value="staff">Staff</option>
+            </select>
+            
+            <select class="filter-select" id="filterStatus">
+              <option value="all">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="scheduled">Scheduled</option>
+            </select>
+            
+            <button class="btn btn-secondary btn-sm" id="resetFiltersBtn">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+        </div>
+        
+        <div class="announcements-list" id="announcementsList">
+          <!-- Announcements will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create/Edit Announcement Modal -->
+  <div class="modal" id="announcementModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Create Announcement</h3>
+        <button class="modal-close" id="closeAnnouncementModalBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="announcementForm">
+          <div class="form-group">
+            <label class="form-label">Title *</label>
+            <input type="text" class="form-control" id="announcementTitle" placeholder="Enter announcement title" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Content *</label>
+            <textarea class="form-control" id="announcementContent" placeholder="Enter announcement content" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Attachments</label>
+            <div class="attachment-section">
+              <div class="file-input-wrapper">
+                <input type="file" id="fileInput" multiple accept="image/*,video/*">
+                <label for="fileInput" class="file-input-label">
+                  <i class="fas fa-paperclip"></i> Add Images or Videos
+                </label>
+              </div>
+              <div class="attachment-preview" id="attachmentPreview">
+                <!-- Preview items will be added here -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Priority *</label>
+            <select class="form-control" id="announcementPriority" required>
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Target Audience *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="audience" value="students" checked>
+                <span>Students</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="audience" value="teachers">
+                <span>Teachers</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="audience" value="organizations">
+                <span>Organizations</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="audience" value="staff">
+                <span>Staff</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Schedule (Optional)</label>
+            <input type="datetime-local" class="form-control" id="scheduleDate">
+            <small style="color: var(--medium-gray); font-size: 12px; margin-top: 4px; display: block;">Leave empty to publish immediately</small>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Expiry Date (Optional)</label>
+            <input type="datetime-local" class="form-control" id="expiryDate">
+          </div>
+          
+          <div class="form-group">
+            <label class="checkbox-item">
+              <input type="checkbox" id="pinAnnouncement">
+              <span>Pin this announcement to the top</span>
+            </label>
+          </div>
+          
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> <span id="submitBtnText">Publish Announcement</span>
+            </button>
+            <button type="button" class="btn btn-secondary" id="cancelAnnouncementBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Details Modal -->
+  <div class="modal" id="viewModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Announcement Details</h3>
+        <button class="modal-close" id="closeViewModalBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="announcementDetails">
+        <!-- Details will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcements JS -->
+  <script src="modules/js/announcements.js"></script>
+</body>
+</html>

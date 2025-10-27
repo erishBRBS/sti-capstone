@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Teacher Portal - Dashboard</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="modules/css/dashboard.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Teacher Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="Dashboard.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="Schedule.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>My Schedule</span>
+      </a>
+      <a href="Students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>My Students</span>
+      </a>
+      
+      <div class="nav-section">Grades Management</div>
+      <a href="UploadGrades.html" class="nav-item">
+        <i class="fas fa-edit"></i>
+        <span>Upload Grades</span>
+      </a>
+      <a href="ViewGrades.html" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>View Grades</span>
+      </a>
+      
+      <div class="nav-section">Communication</div>
+      <a href="Announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="ProfileSettings.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Profile Settings</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Dashboard</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">2</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">JD</div>
+          <div>John Doe</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Welcome back, Professor Doe!</h2>
+        <p>Here's what's happening with your classes today</p>
+      </div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="stat-value">5</div>
+          <div class="stat-label">Active Classes</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon purple-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-value">142</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-clipboard-check"></i>
+          </div>
+          <div class="stat-value">3</div>
+          <div class="stat-label">Pending Submissions</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="stat-value">8</div>
+          <div class="stat-label">Active Announcements</div>
+        </div>
+      </div>
+
+      <!-- Today's Schedule & Recent Announcements -->
+      <div class="content-grid">
+        <!-- Today's Schedule -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Today's Schedule</div>
+            <a href="#" class="view-all">View full schedule →</a>
+          </div>
+          
+          <div id="todaySchedule">
+            <div class="schedule-item">
+              <div class="schedule-time">8:00 - 9:30 AM</div>
+              <div class="schedule-details">
+                <div class="schedule-course">Web Development 101</div>
+                <div class="schedule-section">Section A • Room 301</div>
+              </div>
+            </div>
+            
+            <div class="schedule-item">
+              <div class="schedule-time">10:00 - 11:30 AM</div>
+              <div class="schedule-details">
+                <div class="schedule-course">Database Management</div>
+                <div class="schedule-section">Section B • Room 205</div>
+              </div>
+            </div>
+            
+            <div class="schedule-item">
+              <div class="schedule-time">1:00 - 2:30 PM</div>
+              <div class="schedule-details">
+                <div class="schedule-course">Programming Fundamentals</div>
+                <div class="schedule-section">Section C • Room 402</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Announcements -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Recent Announcements</div>
+            <a href="#" class="view-all">View all →</a>
+          </div>
+          
+          <div id="recentAnnouncements">
+            <div class="announcement-item">
+              <div class="announcement-header">
+                <div>
+                  <div class="announcement-title">Midterm Exam Schedule Released</div>
+                  <div class="announcement-date">2 hours ago</div>
+                </div>
+                <span class="announcement-badge">New</span>
+              </div>
+              <div class="announcement-content">
+                Midterm examinations will be held from Oct 15-20. Check your schedule for specific dates.
+              </div>
+            </div>
+            
+            <div class="announcement-item">
+              <div class="announcement-header">
+                <div>
+                  <div class="announcement-title">Grade Submission Deadline</div>
+                  <div class="announcement-date">1 day ago</div>
+                </div>
+              </div>
+              <div class="announcement-content">
+                Please submit all prelim grades by October 10, 2025. Late submissions require approval.
+              </div>
+            </div>
+            
+            <div class="announcement-item">
+              <div class="announcement-header">
+                <div>
+                  <div class="announcement-title">Faculty Meeting</div>
+                  <div class="announcement-date">3 days ago</div>
+                </div>
+              </div>
+              <div class="announcement-content">
+                Department meeting scheduled for Oct 8 at 3:00 PM in Conference Room A.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grade Submission Reminders -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Grade Submission Reminders</div>
+        </div>
+        
+        <div class="reminders-container">
+          <div class="reminder-item yellow-reminder">
+            <div class="reminder-content">
+              <div class="reminder-title">Web Development 101 - Prelims</div>
+              <div class="reminder-due">Due: October 10, 2025</div>
+            </div>
+            <button class="btn btn-primary" onclick="uploadGrades()">Upload Now</button>
+          </div>
+          
+          <div class="reminder-item blue-reminder">
+            <div class="reminder-content">
+              <div class="reminder-title">Database Management - Midterms</div>
+              <div class="reminder-due">Due: October 15, 2025</div>
+            </div>
+            <button class="btn btn-primary" onclick="uploadGrades()">Upload Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard JS -->
+  <script src="modules/js/dashboard.js"></script>
+</body>
+</html>

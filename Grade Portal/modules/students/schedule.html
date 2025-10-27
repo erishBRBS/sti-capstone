@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Student Portal - Class Schedule</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Class Schedule CSS -->
+  <link rel="stylesheet" href="modules/css/schedule.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">IT Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Grades</span>
+      </a>
+      <a href="schedule.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Class Schedule</span>
+      </a>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div style="padding: 14px 24px; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 10px;">
+        Others
+      </div>
+      <a href="hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item" style="margin-top: 20px;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Class Schedule</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Your Weekly Schedule</h2>
+        <p>Stay organized with your class timetable</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-label">Weekly Hours</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon purple-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="stat-value">7</div>
+          <div class="stat-label">Subjects</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <div class="stat-value">6</div>
+          <div class="stat-label">Classrooms</div>
+        </div>
+      </div>
+
+      <!-- Units Info -->
+      <div class="units-info">
+        <div class="units-text">
+          Total Units: <span class="units-highlight">166.00</span> required, 
+          <span class="units-highlight">138.00</span> taken, 
+          <span class="units-highlight">28.00</span> needed
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-row">
+          <div class="filter-label">School Year & Term:</div>
+          <select id="term" class="filter-select">
+            <option selected>2024-2025 2nd Term Tertiary</option>
+            <option>2024-2025 1st Term Tertiary</option>
+            <option>2023-2024 2nd Term Tertiary</option>
+            <option>2023-2024 1st Term Tertiary</option>
+          </select>
+
+          <div class="filter-label">View:</div>
+          <select id="viewType" class="filter-select">
+            <option selected>Weekly View</option>
+            <option>List View</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Weekly Schedule Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Weekly Schedule</div>
+          <div class="view-selector">
+            <button class="view-btn active" id="tableViewBtn">
+              <i class="fas fa-table"></i> Table View
+            </button>
+            <button class="view-btn" id="listViewBtn">
+              <i class="fas fa-list"></i> List View
+            </button>
+          </div>
+        </div>
+        
+        <!-- Table View -->
+        <div id="tableView" class="schedule-table-container">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <!-- Schedule data will be inserted here by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- List View -->
+        <div id="listView" class="schedule-list">
+          <!-- List view content will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Class Schedule JS -->
+  <script src="modules/js/schedule.js"></script>
+</body>
+</html>

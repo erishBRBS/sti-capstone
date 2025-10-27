@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Announcements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Admin Specific CSS -->
+  <link rel="stylesheet" href="modules/css/admin-announcements.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">Administrator</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="admin-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="admin-manage-students.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Manage Students</span>
+      </a>
+      <a href="admin-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="admin-announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="admin-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="admin-add-admin.html" class="nav-item">
+        <i class="fas fa-user-plus"></i>
+        <span>Add New Admin</span>
+      </a>
+      <a href="admin-reset-password.html" class="nav-item">
+        <i class="fas fa-key"></i>
+        <span>Reset Password</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Manage Announcements</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Create Announcement Form -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Create New Announcement</div>
+        </div>
+        
+        <form id="announcementForm" class="form-grid">
+          <div class="form-group">
+            <label for="audience">Audience</label>
+            <select id="audience" class="form-control" required>
+              <option value="">Select Audience</option>
+              <option value="General">General (All Users)</option>
+              <option value="Teachers">Teachers Only</option>
+              <option value="Students">Students Only</option>
+              <option value="Parents">Parents Only</option>
+              <option value="BSIT">BSIT Students</option>
+              <option value="BSCS">BSCS Students</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="course">Course (Optional)</label>
+            <select id="course" class="form-control">
+              <option value="">Select Course</option>
+              <option value="BSIT">BSIT</option>
+              <option value="BSCS">BSCS</option>
+              <option value="BSBA">BSBA</option>
+              <option value="BSTM">BSTM</option>
+              <option value="ABM">ABM</option>
+              <option value="STEM">STEM</option>
+              <option value="HUMMS">HUMMS</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject (Optional)</label>
+            <input type="text" id="subject" class="form-control" placeholder="Enter announcement subject">
+          </div>
+
+          <div class="form-group">
+            <label for="image">Image Attachment</label>
+            <input type="file" id="image" class="form-control" accept="image/*">
+            <div class="file-preview" id="imagePreview">
+              <img id="previewImage" src="" alt="Preview">
+            </div>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" placeholder="Enter your announcement message" required></textarea>
+          </div>
+          
+          <div class="form-group full-width">
+            <div class="action-buttons">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Post Announcement
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Filters -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Filter Announcements</div>
+        </div>
+        
+        <div class="filter-grid">
+          <div class="form-group">
+            <label for="filterAudience">Audience</label>
+            <select id="filterAudience" class="form-control">
+              <option value="">All Audiences</option>
+              <option value="General">General</option>
+              <option value="Teachers">Teachers</option>
+              <option value="Students">Students</option>
+              <option value="Parents">Parents</option>
+              <option value="BSIT">BSIT</option>
+              <option value="BSCS">BSCS</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="filterCourse">Course</label>
+            <select id="filterCourse" class="form-control">
+              <option value="">All Courses</option>
+              <option value="BSIT">BSIT</option>
+              <option value="BSCS">BSCS</option>
+              <option value="BSBA">BSBA</option>
+              <option value="BSTM">BSTM</option>
+              <option value="ABM">ABM</option>
+              <option value="STEM">STEM</option>
+              <option value="HUMMS">HUMMS</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="filterSubject">Subject Contains</label>
+            <input type="text" id="filterSubject" class="form-control" placeholder="Enter subject keywords">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterDate">Date</label>
+            <input type="date" id="filterDate" class="form-control">
+          </div>
+        </div>
+        
+        <div class="form-group full-width">
+          <div class="action-buttons">
+            <button id="applyFilterBtn" class="btn btn-primary">
+              <i class="fas fa-filter"></i> Apply Filters
+            </button>
+            <button id="clearFilterBtn" class="btn btn-secondary">
+              <i class="fas fa-times"></i> Clear Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Export Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-success" id="exportCSVBtn">
+          <i class="fas fa-file-csv"></i> Export CSV
+        </button>
+        <button class="btn btn-secondary" id="exportExcelBtn">
+          <i class="fas fa-file-excel"></i> Export Excel
+        </button>
+      </div>
+
+      <!-- Announcement List -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">All Announcements</div>
+          <div class="announcement-count">Total: 12 announcements</div>
+        </div>
+        
+        <div class="table-container">
+          <table id="announcementTable">
+            <thead>
+              <tr>
+                <th>Audience</th>
+                <th>Course</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="audience-badge audience-general">General</span></td>
+                <td>-</td>
+                <td>System Maintenance</td>
+                <td>System maintenance scheduled for September 15 from 10 PM to 2 AM.</td>
+                <td><span class="image-indicator">No Image</span></td>
+                <td>Sept 7, 2025</td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" data-id="0"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" data-id="0"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="audience-badge audience-students">Students</span></td>
+                <td>BSIT</td>
+                <td>Midterm Examinations</td>
+                <td>Midterm examinations will begin on October 15. Please check your schedule.</td>
+                <td><span class="image-indicator">No Image</span></td>
+                <td>Sept 5, 2025</td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" data-id="1"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" data-id="1"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="audience-badge audience-teachers">Teachers</span></td>
+                <td>-</td>
+                <td>Faculty Meeting</td>
+                <td>There will be a faculty meeting this Friday at 3 PM in the conference room.</td>
+                <td><span class="image-indicator">No Image</span></td>
+                <td>Sept 3, 2025</td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" data-id="2"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" data-id="2"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="audience-badge audience-parents">Parents</span></td>
+                <td>-</td>
+                <td>Parent-Teacher Conference</td>
+                <td>The parent-teacher conference is scheduled for September 20. Please confirm your attendance.</td>
+                <td><span class="image-indicator">No Image</span></td>
+                <td>Sept 1, 2025</td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" data-id="3"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" data-id="3"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Announcement Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Announcement</h3>
+        <button class="modal-close" id="modalCloseBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="editForm" class="form-grid">
+        <input type="hidden" id="editIndex">
+        
+        <div class="form-group">
+          <label for="editAudience">Audience</label>
+          <select id="editAudience" class="form-control" required>
+            <option value="General">General (All Users)</option>
+            <option value="Teachers">Teachers Only</option>
+            <option value="Students">Students Only</option>
+            <option value="Parents">Parents Only</option>
+            <option value="BSIT">BSIT Students</option>
+            <option value="BSCS">BSCS Students</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="editCourse">Course (Optional)</label>
+          <select id="editCourse" class="form-control">
+            <option value="">Select Course</option>
+            <option value="BSIT">BSIT</option>
+            <option value="BSCS">BSCS</option>
+            <option value="BSBA">BSBA</option>
+            <option value="BSTM">BSTM</option>
+            <option value="ABM">ABM</option>
+            <option value="STEM">STEM</option>
+            <option value="HUMMS">HUMMS</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="editSubject">Subject (Optional)</label>
+          <input type="text" id="editSubject" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="editImage">Image Attachment</label>
+          <input type="file" id="editImage" class="form-control" accept="image/*">
+          <div class="file-preview" id="editImagePreview">
+            <img id="editPreviewImage" src="" alt="Preview">
+          </div>
+          <div id="currentImage"></div>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="editMessage">Message</label>
+          <textarea id="editMessage" class="form-control" required></textarea>
+        </div>
+        
+        <div class="form-group full-width">
+          <div class="action-buttons">
+            <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Admin Specific JavaScript -->
+  <script src="modules/js/admin-announcements.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize admin announcements
+      new AdminAnnouncements();
+    });
+  </script>
+</body>
+</html>

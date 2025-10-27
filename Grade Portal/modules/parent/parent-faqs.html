@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Parent Portal - FAQs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-faqs.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="parent-grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div class="nav-section-divider">Others</div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="parent-faqs.html" class="nav-item active">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item sign-out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>FAQs</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about the Parent Portal</p>
+      </div>
+
+      <!-- Search and Filter Section -->
+      <div class="faq-search-section">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search FAQs...">
+          <i class="fas fa-search search-icon"></i>
+        </div>
+        <div class="faq-counter" id="faqCounter">7 Frequently Asked Questions</div>
+        
+        <div class="faq-categories">
+          <button class="category-btn active" data-category="all">All FAQs</button>
+          <button class="category-btn" data-category="account">Account Issues</button>
+          <button class="category-btn" data-category="academic">Academic</button>
+          <button class="category-btn" data-category="financial">Financial</button>
+        </div>
+      </div>
+
+      <!-- FAQ Content -->
+      <div class="content-card">
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>How to log-in</span>
+            </div>
+            <div class="faq-answer">
+              Sign-in using your STI Microsoft Office 365 account. If you don't know your account yet, get your credentials from the School Laboratory Facilitator or refer to your Registration and Assessment Form to get your official school email address. You may locate it at the lower-left corner of the form.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>My email account is not working</span>
+            </div>
+            <div class="faq-answer">
+              You might be using the old email address format (sti.ph). Please update it using the new format (sti.edu.ph). When a message appears that your email account needs to link up with your record, talk to your School Registrar and request for a record update.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>My default password is not working</span>
+            </div>
+            <div class="faq-answer">
+              Verify the password from your School Laboratory Facilitator. You may also request for a new one by approaching the School Laboratory Facilitator then ask for a password reset.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>Child's Grades</span>
+            </div>
+            <div class="faq-answer">
+              All the grades indicated in your child's Grades section are encoded only by the corresponding teacher or instructor of every subject. For grade-related concerns, you may discuss it with your child's teacher or the School Registrar.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>Child's Class Schedule</span>
+            </div>
+            <div class="faq-answer">
+              Missing time, room, number, or questionable subject periods? Confirm your child's class schedules through the Registrar's Office.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>Program Curriculum</span>
+            </div>
+            <div class="faq-answer">
+              For issues regarding the status of your child's subject list and units taken, proceed to the Registrar's Office to verify the information or report it using our feedback page.
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <i class="fas fa-question-circle"></i>
+              <span>Financial Balances</span>
+            </div>
+            <div class="faq-answer">
+              To validate your child's financial balances, check with the Registrar's Office for clarification.
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-actions">
+          <button class="action-btn" id="expandAllBtn">
+            <i class="fas fa-expand"></i> Expand All
+          </button>
+          <button class="action-btn" id="collapseAllBtn">
+            <i class="fas fa-compress"></i> Collapse All
+          </button>
+          <button class="action-btn" id="printFaqsBtn">
+            <i class="fas fa-print"></i> Print FAQs
+          </button>
+        </div>
+        
+        <div class="contact-section">
+          <strong>Can't find what you're looking for?</strong><br>
+          Send us an email at <a href="mailto:oneapp@sti.edu">oneapp@sti.edu</a> and we'll be happy to assist you with your other concerns.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-faqs.js"></script>
+</body>
+</html>

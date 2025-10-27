@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard - Announcements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Teacher Specific CSS -->
+  <link rel="stylesheet" href="modules/css/teacher-announcements.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">PS</div>
+      <div class="user-details">
+        <div class="user-name">Prof. Santos</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="teacher-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="teacher-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="teacher-students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student List</span>
+      </a>
+      <a href="teacher-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="teacher-announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="teacher-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Announcements</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">PS</div>
+          <div>Prof. Santos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Create Announcement -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-plus-circle"></i> Create New Announcement
+          </div>
+        </div>
+        
+        <form id="announcementForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="audience">Audience</label>
+              <select id="audience" class="form-control" required>
+                <option value="">Select Audience</option>
+                <option value="Students">Students</option>
+                <option value="Teachers">Teachers</option>
+                <option value="All">All</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="course">Course (optional)</label>
+              <input type="text" id="course" class="form-control" placeholder="Enter course">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject (optional)</label>
+              <input type="text" id="subject" class="form-control" placeholder="Enter subject">
+            </div>
+            
+            <div class="form-group">
+              <label for="image">Image Attachment</label>
+              <input type="file" id="image" class="form-control">
+            </div>
+            
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" placeholder="Enter your announcement message" required></textarea>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Post Announcement
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Filters -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-filter"></i> Filter Announcements
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="filterAudience">Audience</label>
+            <select id="filterAudience" class="form-control">
+              <option value="">All Audiences</option>
+              <option value="Students">Students</option>
+              <option value="Teachers">Teachers</option>
+              <option value="All">All</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="filterCourse">Course</label>
+            <input type="text" id="filterCourse" class="form-control" placeholder="Filter by course">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterSubject">Subject</label>
+            <input type="text" id="filterSubject" class="form-control" placeholder="Filter by subject">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterDate">Date</label>
+            <input type="date" id="filterDate" class="form-control">
+          </div>
+        </div>
+        
+        <div class="action-buttons">
+          <button id="applyFilterBtn" class="btn btn-primary">
+            <i class="fas fa-filter"></i> Apply Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Export Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-success" id="exportCSVBtn">
+          <i class="fas fa-file-csv"></i> Export CSV
+        </button>
+        <button class="btn btn-secondary" id="exportExcelBtn">
+          <i class="fas fa-file-excel"></i> Export Excel
+        </button>
+      </div>
+
+      <!-- Announcements Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-bullhorn"></i> All Announcements
+          </div>
+          <div class="announcement-count">Total: 3 announcements</div>
+        </div>
+        
+        <div class="table-container">
+          <table id="announcementTable">
+            <thead>
+              <tr>
+                <th>Audience</th>
+                <th>Course</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Announcement data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Announcement Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Announcement</h3>
+        <button class="modal-close" id="modalCloseBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <form id="editForm" class="form-grid">
+        <input type="hidden" id="editIndex">
+        
+        <div class="form-group">
+          <label for="editAudience">Audience</label>
+          <select id="editAudience" class="form-control" required>
+            <option value="Students">Students</option>
+            <option value="Teachers">Teachers</option>
+            <option value="All">All</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="editCourse">Course (optional)</label>
+          <input type="text" id="editCourse" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="editSubject">Subject (optional)</label>
+          <input type="text" id="editSubject" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="editImage">Image Attachment</label>
+          <input type="file" id="editImage" class="form-control">
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label for="editMessage">Message</label>
+          <textarea id="editMessage" class="form-control" required></textarea>
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Teacher Specific JavaScript -->
+  <script src="modules/js/teacher-announcements.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize teacher announcements
+      new TeacherAnnouncements();
+    });
+  </script>
+</body>
+</html>

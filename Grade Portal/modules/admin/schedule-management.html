@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Schedule Management</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Schedule Management CSS -->
+  <link rel="stylesheet" href="modules/css/schedule-management.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="Logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Schedule Management</h1>
+        <p>Manage class schedules and assignments</p>
+      </div>
+      
+      <div class="header-actions">
+        <select class="form-control" id="semesterSelect" style="width: auto;">
+          <option>2024-1st Semester</option>
+          <option>2024-2nd Semester</option>
+        </select>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Alert Messages -->
+      <div id="alertContainer"></div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-calendar"></i>
+          </div>
+          <div class="stat-value">168</div>
+          <div class="stat-label">Total Classes</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <div class="stat-value">42</div>
+          <div class="stat-label">Active Rooms</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon red-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="stat-value">5</div>
+          <div class="stat-label">Conflicts</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <div class="stat-value">87%</div>
+          <div class="stat-label">Utilization</div>
+        </div>
+      </div>
+
+      <!-- Schedule Management Tabs -->
+      <div class="tabs-container">
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="calendar">
+            <i class="fas fa-calendar-alt"></i>
+            Calendar
+          </button>
+          <button class="tab-btn" data-tab="list">
+            <i class="fas fa-list"></i>
+            Class List
+          </button>
+        </div>
+
+        <!-- Calendar Tab -->
+        <div id="calendar" class="tab-content active">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Class Schedule Calendar</div>
+              <div class="view-all">Manage and view class schedules</div>
+            </div>
+            
+            <div class="calendar-controls">
+              <div class="calendar-navigation">
+                <button class="btn btn-secondary" id="prevWeekBtn">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="week-display" id="weekDisplay">Week of Nov 25 - Dec 1, 2024</div>
+                <button class="btn btn-secondary" id="nextWeekBtn">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <button class="btn btn-primary" id="addScheduleBtn">
+                <i class="fas fa-plus"></i> Add Schedule
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="schedule-calendar">
+                <thead>
+                  <tr>
+                    <th style="width: 100px;">Time</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                  </tr>
+                </thead>
+                <tbody id="calendarBody">
+                  <!-- Calendar content will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Tab -->
+        <div id="list" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Class Schedule List</div>
+              <div class="view-all">View and manage all class schedules</div>
+            </div>
+            
+            <div class="list-controls">
+              <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search schedules..." id="scheduleSearch">
+              </div>
+              <button class="btn btn-secondary" id="exportSchedulesBtn">
+                <i class="fas fa-download"></i> Export
+              </button>
+            </div>
+            
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Course</th>
+                    <th>Section</th>
+                    <th>Teacher</th>
+                    <th>Schedule</th>
+                    <th>Room</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="scheduleListBody">
+                  <!-- Schedule list will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Schedule Modal -->
+  <div class="modal" id="addModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Schedule</h3>
+        <button class="modal-close" id="closeAddModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addScheduleForm">
+          <div class="form-row">
+            <div>
+              <label class="form-label">Course Code</label>
+              <input type="text" class="form-control" id="courseCode" placeholder="e.g., CS101">
+            </div>
+            <div>
+              <label class="form-label">Section</label>
+              <input type="text" class="form-control" id="section" placeholder="e.g., A">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Teacher</label>
+            <select class="form-control" id="teacherSelect">
+              <option>Prof. Rodriguez</option>
+              <option>Prof. Santos</option>
+              <option>Prof. Martinez</option>
+              <option>Prof. Johnson</option>
+              <option>Prof. Garcia</option>
+            </select>
+          </div>
+          
+          <div class="form-row">
+            <div>
+              <label class="form-label">Day</label>
+              <select class="form-control" id="daySelect">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Duration</label>
+              <select class="form-control" id="durationSelect">
+                <option value="1">1 hour</option>
+                <option value="1.5">1.5 hours</option>
+                <option value="2" selected>2 hours</option>
+                <option value="3">3 hours</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div>
+              <label class="form-label">Start Time</label>
+              <input type="time" class="form-control" id="startTime" min="07:00" max="19:00" value="08:00">
+            </div>
+            <div>
+              <label class="form-label">End Time</label>
+              <input type="time" class="form-control" id="endTime" min="07:00" max="19:00" readonly>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Room</label>
+            <select class="form-control" id="roomSelect">
+              <option>Room 301</option>
+              <option>Room 302</option>
+              <option>Room 401</option>
+              <option>Room 402</option>
+              <option>Room 501</option>
+            </select>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" class="btn btn-primary" id="saveScheduleBtn">Add Schedule</button>
+            <button type="button" class="btn btn-secondary" id="cancelAddBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule Management JS -->
+  <script src="modules/js/schedule-management.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Parent Portal - Announcements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-announcements.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href=parent-grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div class="nav-section-divider">Others</div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="parent-faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item sign-out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Announcements</h1>
+        <p>Stay updated with school news and important information</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Student Selector -->
+      <div class="student-selector">
+        <div class="student-info">
+          <div class="student-avatar">HY</div>
+          <div class="student-details">
+            <h3>Hadassa Yap</h3>
+            <p>IT Student - BS Information Technology</p>
+          </div>
+        </div>
+        <div>
+          <select class="student-select" id="studentSelect">
+            <option value="hadassa">Hadassa Yap - IT Student</option>
+            <option value="john">John Yap - BS Computer Science</option>
+            <option value="sarah">Sarah Yap - Senior High School</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-row">
+          <div class="filter-label">Category:</div>
+          <select id="category" class="filter-select">
+            <option selected>All Categories</option>
+            <option>Important</option>
+            <option>Academic</option>
+            <option>Events</option>
+            <option>General</option>
+          </select>
+
+          <div class="filter-label">Priority:</div>
+          <select id="priority" class="filter-select">
+            <option selected>All Priorities</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+
+          <div class="filter-label">Date Range:</div>
+          <select id="dateRange" class="filter-select">
+            <option selected>Last 30 Days</option>
+            <option>Last Week</option>
+            <option>Last 3 Months</option>
+            <option>All Time</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Announcements Summary -->
+      <div class="announcements-summary">
+        <div class="summary-card">
+          <div class="summary-value">12</div>
+          <div class="summary-label">Total Announcements</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">3</div>
+          <div class="summary-label">High Priority</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">5</div>
+          <div class="summary-label">Unread</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">2</div>
+          <div class="summary-label">This Week</div>
+        </div>
+      </div>
+
+      <!-- Announcements Container -->
+      <div class="announcements-container" id="announcementsContainer">
+        <!-- Announcements will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Modal -->
+  <div class="modal" id="announcementModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="flex: 1;">
+          <h3 class="modal-title" id="modalTitle">Announcement Title</h3>
+          <div class="modal-meta" id="modalMeta">
+            <!-- Meta information will be inserted here by JavaScript -->
+          </div>
+        </div>
+        <button class="modal-close" id="modalClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img id="modalImage" class="modal-image" src="" alt="" style="display: none;">
+        <div class="modal-content-text" id="modalContent">
+          <!-- Content will be inserted here by JavaScript -->
+        </div>
+        <div class="modal-attachments" id="modalAttachments" style="display: none;">
+          <div class="attachments-title">Attachments</div>
+          <div class="attachment-list" id="attachmentList">
+            <!-- Attachments will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-announcements.js"></script>
+</body>
+</html>

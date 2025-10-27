@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Teacher Portal - My Students</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="modules/css/students.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Teacher Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="Dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="Schedule.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>My Schedule</span>
+      </a>
+      <a href="Students.html" class="nav-item active">
+        <i class="fas fa-users"></i>
+        <span>My Students</span>
+      </a>
+      
+      <div class="nav-section">Grades Management</div>
+      <a href="UploadGrades.html" class="nav-item">
+        <i class="fas fa-edit"></i>
+        <span>Upload Grades</span>
+      </a>
+      <a href="ViewGrades.html" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>View Grades</span>
+      </a>
+      
+      <div class="nav-section">Communication</div>
+      <a href="Announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="ProfileSettings.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Profile Settings</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>My Students</h1>
+        <p>View and manage your students</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">JD</div>
+          <div>John Doe</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Student List</div>
+          <div class="view-toggle">
+            <button class="toggle-btn active" data-action="switchView" data-view="grid">
+              <i class="fas fa-th"></i> Grid
+            </button>
+            <button class="toggle-btn" data-action="switchView" data-view="table">
+              <i class="fas fa-table"></i> Table
+            </button>
+          </div>
+        </div>
+        
+        <div class="filters-section">
+          <div class="filter-group">
+            <label class="filter-label">Course:</label>
+            <select class="filter-select" id="courseFilter">
+              <option value="all">All Courses</option>
+              <option value="WEB101">WEB101 - Web Development</option>
+              <option value="DB201">DB201 - Database Management</option>
+              <option value="PROG101">PROG101 - Programming Fundamentals</option>
+              <option value="NET301">NET301 - Network Administration</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label class="filter-label">Section:</label>
+            <select class="filter-select" id="sectionFilter">
+              <option value="all">All Sections</option>
+              <option value="A">Section A</option>
+              <option value="B">Section B</option>
+              <option value="C">Section C</option>
+              <option value="D">Section D</option>
+            </select>
+          </div>
+          
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search by name or ID...">
+          </div>
+        </div>
+        
+        <div class="student-grid" id="studentGrid"></div>
+        
+        <div class="table-view" id="tableView">
+          <table class="students-table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="studentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Student Profile</h3>
+        <button class="modal-close" id="modalCloseBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="modules/js/students.js"></script>
+</body>
+</html>

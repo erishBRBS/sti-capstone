@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor - Teacher Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Teacher Specific CSS -->
+  <link rel="stylesheet" href="modules/css/teacher-styles.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">University Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">PS</div>
+      <div class="user-details">
+        <div class="user-name">Prof. Santos</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="teacher-dashboard.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="teacher-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="teacher-students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student List</span>
+      </a>
+      <a href="teacher-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="teacher-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="teacher-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Teacher Dashboard</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">PS</div>
+          <div>Prof. Santos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Stats Overview -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="weeklyClasses">12</div>
+            <div class="stat-label">Classes This Week</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="totalStudents">85</div>
+            <div class="stat-label">Total Students</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-chalkboard"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="todayClasses">3</div>
+            <div class="stat-label">Today's Classes</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="newAnnouncements">5</div>
+            <div class="stat-label">New Announcements</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Quick Actions</div>
+        </div>
+        
+        <div class="quick-actions">
+          <a href="teacher-attendance.html" class="action-btn" data-action="attendance">
+            <div class="action-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <span>Take Attendance</span>
+          </a>
+          
+          <a href="teacher-students.html" class="action-btn" data-action="students">
+            <div class="action-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <span>View Students</span>
+          </a>
+          
+          <a href="teacher-schedule.html" class="action-btn" data-action="schedule">
+            <div class="action-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <span>My Schedule</span>
+          </a>
+          
+          <a href="teacher-announcements.html" class="action-btn" data-action="announcements">
+            <div class="action-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <span>Announcements</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Today's Classes -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-calendar-day"></i> Today's Classes
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Section</th>
+                <th>Room</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="todaysClasses">
+              <tr>
+                <td>Mathematics</td>
+                <td>BSIT 2A</td>
+                <td>Room 204</td>
+                <td>8:00 AM - 9:30 AM</td>
+                <td><span class="badge badge-success">Completed</span></td>
+                <td><button class="btn btn-primary view-attendance">View Attendance</button></td>
+              </tr>
+              <tr>
+                <td>Science</td>
+                <td>BSIT 3B</td>
+                <td>Room 305</td>
+                <td>10:00 AM - 11:30 AM</td>
+                <td><span class="badge badge-warning">In Progress</span></td>
+                <td><button class="btn btn-primary take-attendance">Take Attendance</button></td>
+              </tr>
+              <tr>
+                <td>Programming</td>
+                <td>BSCS 1C</td>
+                <td>Lab 102</td>
+                <td>1:00 PM - 2:30 PM</td>
+                <td><span class="badge badge-info">Upcoming</span></td>
+                <td><button class="btn btn-outline" disabled>Starts Soon</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Announcements -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-bullhorn"></i> Latest Announcements
+          </div>
+          <a href="teacher-announcements.html" class="view-all">View All</a>
+        </div>
+        
+        <div id="announcementsList">
+          <div class="announcement-item">
+            <div class="announcement-title">General Assembly - September 15</div>
+            <div class="announcement-meta">Posted by Administration • September 10, 2023</div>
+            <p>All faculty members are required to attend the general assembly on September 15 at the main auditorium. Please arrive 15 minutes early for registration.</p>
+          </div>
+          
+          <div class="announcement-item">
+            <div class="announcement-title">Class Suspension - September 18 (Typhoon)</div>
+            <div class="announcement-meta">Posted by Administration • September 9, 2023</div>
+            <p>Due to the approaching typhoon, all classes on September 18 are suspended. Please check your email for updates regarding make-up classes.</p>
+          </div>
+          
+          <div class="announcement-item">
+            <div class="announcement-title">New Curriculum Guidelines</div>
+            <div class="announcement-meta">Posted by Academic Department • September 5, 2023</div>
+            <p>Updated curriculum guidelines have been released. Please review the changes in the faculty portal and submit feedback by September 20.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Teacher Specific JavaScript -->
+  <script src="modules/js/teacher-dashboard.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      if (typeof Utils !== 'undefined' && Utils.setCurrentDate) {
+        Utils.setCurrentDate();
+      }
+      
+      // Initialize theme manager
+      if (typeof ThemeManager !== 'undefined') {
+        new ThemeManager();
+      }
+      
+      // Initialize sidebar manager
+      if (typeof SidebarManager !== 'undefined') {
+        new SidebarManager();
+      }
+      
+      // Initialize teacher dashboard
+      if (typeof TeacherDashboard !== 'undefined') {
+        new TeacherDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

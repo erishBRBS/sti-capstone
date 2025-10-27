@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STI Bacoor - Student Gate Attendance</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Student Specific CSS -->
+  <link rel="stylesheet" href="modules/css/student-gate-attendance.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="student-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-gate-attendance.html" class="nav-item active">
+        <i class="fas fa-door-open"></i>
+        <span>Gate Attendance</span>
+      </a>
+      <a href="student-subject-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Subject Attendance</span>
+      </a>
+      <a href="student-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="student-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="student-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="login.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Gate Attendance</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Summary Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-sign-in-alt"></i>
+          </div>
+          <div class="stat-value" id="totalEntries">0</div>
+          <div class="stat-label">Total Entries</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <div class="stat-value" id="completeEntries">0</div>
+          <div class="stat-label">Complete In/Out</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="stat-value" id="missingOut">0</div>
+          <div class="stat-label">Missing Time Out</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon red-icon">
+            <i class="fas fa-times-circle"></i>
+          </div>
+          <div class="stat-value" id="noEntries">0</div>
+          <div class="stat-label">No Entry Days</div>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Today's Activity Card -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-clock"></i> Today's Activity
+              </div>
+            </div>
+            
+            <div class="today-activity">
+              <div class="activity-item">
+                <div class="activity-icon time-in">
+                  <i class="fas fa-sign-in-alt"></i>
+                </div>
+                <div class="activity-info">
+                  <div class="activity-title">Time In</div>
+                  <div class="activity-time" id="todayTimeIn">07:45 AM</div>
+                  <div class="activity-method">Face Recognition</div>
+                </div>
+              </div>
+              
+              <div class="activity-item">
+                <div class="activity-icon time-out">
+                  <i class="fas fa-sign-out-alt"></i>
+                </div>
+                <div class="activity-info">
+                  <div class="activity-title">Time Out</div>
+                  <div class="activity-time" id="todayTimeOut">Not yet recorded</div>
+                  <div class="activity-method">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Card -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-filter"></i> Filter Records
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="dateRange">Date Range</label>
+              <div class="date-range-inputs">
+                <input type="date" id="dateFrom" class="form-control" placeholder="From">
+                <span class="date-separator">to</span>
+                <input type="date" id="dateTo" class="form-control" placeholder="To">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="methodFilter">Method</label>
+              <select id="methodFilter" class="form-control">
+                <option value="">All Methods</option>
+                <option value="Face Recognition">Face Recognition</option>
+                <option value="RFID">RFID</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="entryType">Entry Type</label>
+              <select id="entryType" class="form-control">
+                <option value="">All Types</option>
+                <option value="complete">Complete In/Out</option>
+                <option value="in-only">Time In Only</option>
+                <option value="no-entry">No Entry</option>
+              </select>
+            </div>
+            
+            <div class="filter-actions">
+              <button class="btn btn-primary" id="applyFilters">
+                <i class="fas fa-filter"></i> Apply Filters
+              </button>
+              <button class="btn btn-outline" id="clearFilters">
+                <i class="fas fa-times"></i> Clear
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Gate Logs Card -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <i class="fas fa-list-alt"></i> Gate Entry/Exit Logs
+              </div>
+              <div class="table-actions">
+                <button class="btn btn-primary" id="exportCSV">
+                  <i class="fas fa-file-csv"></i> Export CSV
+                </button>
+                <button class="btn btn-secondary" id="exportExcel">
+                  <i class="fas fa-file-excel"></i> Export Excel
+                </button>
+              </div>
+            </div>
+            
+            <div class="table-info">
+              Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> records
+            </div>
+            
+            <div class="table-container">
+              <table id="gateLogsTable">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Time In</th>
+                    <th>Method</th>
+                    <th>Time Out</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="gateLogsTableBody">
+                  <!-- Gate logs data will be populated by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="table-footer">
+              <div class="pagination-info">
+                Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+              </div>
+              <div class="pagination-controls">
+                <button class="btn btn-outline" id="prevPage" disabled>
+                  <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="btn btn-outline" id="nextPage" disabled>
+                  Next <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Student Specific JavaScript -->
+  <script src="modules/js/student-gate-attendance.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize student gate attendance
+      new StudentGateAttendance();
+    });
+  </script>
+</body>
+</html>

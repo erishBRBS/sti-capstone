@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Admin Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="modules/css/settings.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item active">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="Logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Admin Settings</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList">
+              <!-- Notifications will be populated here -->
+            </div>
+            <div class="notification-footer">
+              <a href="#" id="markAllAsReadBtn">Mark all as read</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Alert Messages -->
+      <div id="alertContainer"></div>
+      
+      <!-- Account Settings -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Account Settings</div>
+        </div>
+        
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Username / Email</label>
+            <input type="email" value="admin@sti.edu" class="form-control" id="adminEmail">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Change Password</label>
+            <input type="password" placeholder="New password" class="form-control" id="newPassword">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Profile Picture</label>
+            <input type="file" class="form-control" id="profilePicture">
+          </div>
+          
+          <div class="checkbox-container">
+            <input type="checkbox" id="twoFactorAuth">
+            <label for="twoFactorAuth" class="form-label" style="margin-bottom: 0;">Enable Two-Factor Authentication</label>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="saveAccountSettings">
+            <i class="fas fa-save"></i> Save Account Settings
+          </button>
+        </div>
+      </div>
+
+      <!-- School Information -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">School Information</div>
+        </div>
+        
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">School Year & Term</label>
+            <input type="text" value="2024-2025 - 2nd Term" class="form-control" id="schoolYear">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Helpdesk Email</label>
+            <input type="email" value="helpdesk@sti.edu.ph" class="form-control" id="helpdeskEmail">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">School Logo</label>
+            <input type="file" class="form-control" id="schoolLogo">
+          </div>
+          
+          <div class="checkbox-container">
+            <input type="checkbox" id="maintenanceMode">
+            <label for="maintenanceMode" class="form-label" style="margin-bottom: 0;">Enable Maintenance Mode</label>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="saveSchoolInfo">
+            <i class="fas fa-save"></i> Save School Information
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Management -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Admin Management</div>
+        </div>
+        
+        <div class="table-container">
+          <table id="adminTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Juan Dela Cruz</td>
+                <td>Registrar</td>
+                <td>registrar@sti.edu</td>
+                <td>
+                  <button class="btn btn-secondary btn-sm edit-admin">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                  <button class="btn btn-danger btn-sm remove-admin">
+                    <i class="fas fa-trash"></i> Remove
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>Maria Santos</td>
+                <td>Finance Admin</td>
+                <td>finance@sti.edu</td>
+                <td>
+                  <button class="btn btn-secondary btn-sm edit-admin">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                  <button class="btn btn-danger btn-sm remove-admin">
+                    <i class="fas fa-trash"></i> Remove
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <button class="btn btn-primary" id="addAdminBtn">
+            <i class="fas fa-plus"></i> Add New Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- System Settings -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">System Settings</div>
+        </div>
+        
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Default GPA Scale</label>
+            <input type="text" value="1.00 - 5.00" class="form-control" id="gpaScale">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Currency Format</label>
+            <input type="text" value="PHP ₱" class="form-control" id="currencyFormat">
+          </div>
+          
+          <div class="checkbox-container">
+            <input type="checkbox" id="hideGradesBalance">
+            <label for="hideGradesBalance" class="form-label" style="margin-bottom: 0;">Hide grades if student has balance</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input type="checkbox" id="autoBackup" checked>
+            <label for="autoBackup" class="form-label" style="margin-bottom: 0;">Enable automatic weekly backups</label>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="saveSystemSettings">
+            <i class="fas fa-save"></i> Save System Settings
+          </button>
+        </div>
+      </div>
+
+      <!-- Backup & Export -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Backup & Export</div>
+        </div>
+        
+        <div class="btn-group">
+          <button class="btn btn-success" id="downloadBackupBtn">
+            <i class="fas fa-download"></i> Download Backup
+          </button>
+          <button class="btn btn-primary" id="restoreDataBtn">
+            <i class="fas fa-upload"></i> Restore Data
+          </button>
+          <button class="btn btn-secondary" id="systemLogsBtn">
+            <i class="fas fa-file-alt"></i> View System Logs
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Admin Modal -->
+  <div class="modal" id="addAdminModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Admin</h3>
+        <button class="modal-close" id="closeAdminModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="adminForm">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="adminName" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" id="adminEmail" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <select class="form-control" id="adminRole" required>
+              <option value="">Select Role</option>
+              <option value="registrar">Registrar</option>
+              <option value="finance">Finance Admin</option>
+              <option value="academic">Academic Admin</option>
+              <option value="support">Support Staff</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Permissions</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="permissions" value="students" checked>
+                <span>Student Records</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="permissions" value="grades">
+                <span>Grades Management</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="permissions" value="payments">
+                <span>Payment Access</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="permissions" value="reports">
+                <span>Generate Reports</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Add Admin
+            </button>
+            <button type="button" class="btn btn-secondary" id="cancelAdminBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings JS -->
+  <script src="modules/js/settings.js"></script>
+</body>
+</html>

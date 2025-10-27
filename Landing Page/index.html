@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor - Smart Student Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="modules/css/style.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">STI Bacoor Portal</div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#showcase">Campus</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><button class="login-btn" id="loginBtn">Login</button></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content animate-on-scroll">
+      <h1>Your <span class="hero-gradient-text">Smart Academic</span> Journey Starts Here</h1>
+      <p>Experience the future of student portals with AI-powered insights, real-time updates, and seamless academic management.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" id="heroLoginBtn">
+          <i class="fas fa-sign-in-alt"></i>
+          Access Portal
+        </button>
+        <a href="#showcase" class="btn-secondary">
+          <i class="fas fa-university"></i>
+          Explore Campus
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats animate-on-scroll">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">2,500+</span>
+        <p class="stat-label">Active Students</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">99.9%</span>
+        <p class="stat-label">Uptime</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <p class="stat-label">Programs</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <p class="stat-label">Support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="section-header animate-on-scroll">
+      <h2>Powerful Features for Modern Students</h2>
+      <p>Everything you need to succeed in your academic journey, all in one intelligent platform.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <h3>AI-Powered Analytics</h3>
+        <p>Get personalized insights into your academic performance with machine learning algorithms that help predict and improve your grades.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Mobile-First Design</h3>
+        <p>Access your portal seamlessly across all devices with our responsive design and progressive web app capabilities.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Advanced Security</h3>
+        <p>Your data is protected with enterprise-grade security, including two-factor authentication and encrypted communications.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Real-Time Updates</h3>
+        <p>Stay informed with instant notifications for grades, schedule changes, announcements, and important deadlines.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Academic Planning</h3>
+        <p>Plan your academic path with degree progress tracking, prerequisite mapping, and graduation timeline visualization.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+        <div class="feature-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>Collaborative Tools</h3>
+        <p>Connect with classmates, join study groups, and collaborate on projects with integrated communication tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Showcase Section -->
+  <section class="school-showcase" id="showcase">
+    <div class="showcase-container">
+      <div class="section-header animate-on-scroll">
+        <h2>Experience STI Bacoor</h2>
+        <p>Discover our modern facilities, vibrant campus life, and the opportunities that await you at STI Bacoor.</p>
+      </div>
+      
+      <div class="showcase-grid">
+        <div class="showcase-card main-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="images/campus.jpg" alt="STI Bacoor Campus" />
+            <div class="showcase-overlay">
+              <h3>Modern Campus</h3>
+              <p>State-of-the-art facilities designed for 21st century learning</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="showcase-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Computer Laboratory" />
+            <div class="showcase-overlay">
+              <h3>Tech Labs</h3>
+              <p>Advanced computer laboratories with latest software</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="showcase-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Library" />
+            <div class="showcase-overlay">
+              <h3>Library</h3>
+              <p>Comprehensive digital and physical learning resources</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="showcase-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Students Studying" />
+            <div class="showcase-overlay">
+              <h3>Student Life</h3>
+              <p>Collaborative learning environment</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="showcase-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Group Study" />
+            <div class="showcase-overlay">
+              <h3>Events</h3>
+              <p>Regular academic and cultural activities</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="showcase-card animate-on-scroll">
+          <div class="showcase-image">
+            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Graduation" />
+            <div class="showcase-overlay">
+              <h3>Success</h3>
+              <p>Celebrating our graduates' achievements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="showcase-stats">
+        <div class="stat-highlight animate-on-scroll">
+          <div class="stat-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <div class="stat-content">
+            <h4>Excellence in Education</h4>
+            <p>Recognized for outstanding academic programs and student success rates</p>
+          </div>
+        </div>
+        
+        <div class="stat-highlight animate-on-scroll">
+          <div class="stat-icon">
+            <i class="fas fa-industry"></i>
+          </div>
+          <div class="stat-content">
+            <h4>Industry Partnerships</h4>
+            <p>Strong connections with leading companies for internships and job placements</p>
+          </div>
+        </div>
+        
+        <div class="stat-highlight animate-on-scroll">
+          <div class="stat-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="stat-content">
+            <h4>Global Standards</h4>
+            <p>Curriculum designed to meet international educational standards</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="section-header animate-on-scroll">
+      <h2>How It Works</h2>
+      <p>Get started in just a few simple steps and transform your academic experience.</p>
+    </div>
+    <div class="steps-container">
+      <div class="step animate-on-scroll">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Create Your Account</h3>
+          <p>Sign up with your student credentials provided by STI Bacoor. Your account is automatically configured with your program and course information.</p>
+        </div>
+      </div>
+      <div class="step animate-on-scroll">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Personalize Your Dashboard</h3>
+          <p>Customize your dashboard with widgets that matter most to you. Choose from grades, schedule, announcements, and more.</p>
+        </div>
+      </div>
+      <div class="step animate-on-scroll">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Stay Connected</h3>
+          <p>Enable notifications to stay updated on important academic events, deadlines, and achievements in real-time.</p>
+        </div>
+      </div>
+      <div class="step animate-on-scroll">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Achieve Your Goals</h3>
+          <p>Use our analytics and planning tools to track your progress, identify areas for improvement, and achieve academic excellence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-container">
+      <div class="section-header animate-on-scroll">
+        <h2>What Students Say</h2>
+        <p>Hear from our community of successful students who have transformed their academic experience.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <p class="testimonial-text">
+            "The STI Bacoor portal has completely changed how I manage my studies. The AI insights helped me improve my grades by 15% this semester!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div class="author-info">
+              <h4>Maria Rodriguez</h4>
+              <p>Computer Science Student</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <p class="testimonial-text">
+            "I love how I can access everything from my phone. The mobile app is incredibly user-friendly and keeps me organized on the go."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JC</div>
+            <div class="author-info">
+              <h4>John Chen</h4>
+              <p>Business Administration Student</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card animate-on-scroll">
+          <p class="testimonial-text">
+            "The real-time notifications saved me from missing several important deadlines. This portal is a game-changer for student success."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AS</div>
+            <div class="author-info">
+              <h4>Anna Santos</h4>
+              <p>Information Technology Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-header animate-on-scroll">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find answers to common questions about our student portal.</p>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          How do I access the student portal?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>You can access the student portal by visiting our website and clicking on the "Student Login" button. Use your student ID and password provided by the administration. If you're a first-time user, you'll receive login credentials via your registered email address.</p>
+        </div>
+      </div>
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          What if I forgot my password?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>If you forgot your password, click on the "Forgot Password" link on the login page. You'll be prompted to enter your student ID and registered email address. A password reset link will be sent to your email. If you continue to have issues, please contact the IT support desk.</p>
+        </div>
+      </div>
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          How often are grades updated?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Grades are typically updated within 48 hours after an exam has been graded. However, this may vary depending on the instructor. You'll receive a notification when new grades are posted to your account, and our AI system will provide insights on your academic progress.</p>
+        </div>
+      </div>
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          Can I access the portal from my mobile device?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! Our portal is designed mobile-first and works perfectly on smartphones and tablets. You can also install it as a Progressive Web App (PWA) for a native app-like experience. We recommend using the latest version of Chrome, Firefox, Safari, or Edge for the best experience.</p>
+        </div>
+      </div>
+      <div class="faq-item animate-on-scroll">
+        <button class="faq-question">
+          What security measures protect my data?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer">
+          <p>We employ enterprise-grade security including SSL encryption, two-factor authentication, regular security audits, and compliance with educational data privacy regulations. Your personal and academic information is stored on secure servers with restricted access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content animate-on-scroll">
+      <h2>Ready to Transform Your Academic Experience?</h2>
+      <p>Join thousands of successful STI Bacoor students who have already revolutionized their academic journey.</p>
+      <button class="btn-primary pulse" id="ctaLoginBtn">
+        <i class="fas fa-graduation-cap"></i>
+        Access Your Portal Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>STI Bacoor Portal</h3>
+        <p>Empowering students with intelligent academic management tools for success in the digital age.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-links">
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Contact Support</a>
+        <a href="#">System Status</a>
+        <a href="#">Documentation</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <p>STI College Bacoor</p>
+        <p>Email: portal@stibacoor.edu.ph</p>
+        <p>Phone: (046) 123-4567</p>
+        <p>24/7 IT Support Available</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 STI Bacoor Student Portal. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </div>
+  </footer>
+
+  <!-- Enhanced Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Portal Login</h2>
+      
+      <!-- User Type Selector -->
+      <div class="user-type-selector">
+        <div class="user-type-option active" data-type="student">
+          <i class="fas fa-user-graduate user-type-icon"></i>
+          Student
+        </div>
+        <div class="user-type-option" data-type="admin">
+          <i class="fas fa-user-tie user-type-icon"></i>
+          Admin
+        </div>
+      </div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="userId" id="userIdLabel">Student ID</label>
+          <input type="text" id="userId" placeholder="Enter your Student ID" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required />
+        </div>
+        
+        <!-- Custom Checkbox -->
+        <label class="checkbox-container">
+          <input type="checkbox" id="rememberMe">
+          <span class="custom-checkbox"></span>
+          <span class="checkbox-label">Remember me</span>
+        </label>
+        
+        <button type="submit" class="login-submit-btn">
+          <span class="login-text">Login to Portal</span>
+          <span class="loading-spinner"></span>
+        </button>
+        
+        <div class="forgot-password">
+          <a href="#">Forgot your password?</a>
+        </div>
+      </form>
+      
+      <div class="modal-footer">
+        <p>Need help accessing your account?</p>
+        <a href="#" class="support-link">Contact IT Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript -->
+  <script src="modules/js/script.js"></script>
+</body>
+</html>

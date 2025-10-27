@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STI Bacoor - Student Schedule</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Student Specific CSS -->
+  <link rel="stylesheet" href="modules/css/student-schedule.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JC</div>
+      <div class="user-details">
+        <div class="user-name">Juan Dela Cruz</div>
+        <div class="user-role">Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="student-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-gate-attendance.html" class="nav-item">
+        <i class="fas fa-door-open"></i>
+        <span>Gate Attendance</span>
+      </a>
+      <a href="student-subject-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Subject Attendance</span>
+      </a>
+      <a href="student-schedule.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="student-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="student-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Class Schedule</h1>
+        <p id="todayDate">View your class schedule and class information</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">JC</div>
+          <div>Juan Dela Cruz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Summary Cards -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-icon blue-icon">
+            <i class="fas fa-calendar-week"></i>
+          </div>
+          <div class="summary-value">8</div>
+          <div class="summary-label">Classes per Week</div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="summary-icon purple-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="summary-value">4</div>
+          <div class="summary-label">Different Subjects</div>
+        </div>
+        
+        <div class="summary-card">
+          <div class="summary-icon yellow-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="summary-value">20</div>
+          <div class="summary-label">Hours per Week</div>
+        </div>
+      </div>
+
+      <!-- Schedule Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Weekly Schedule</div>
+          <div class="view-selector">
+            <button class="view-btn active" id="tableViewBtn">
+              <i class="fas fa-table"></i> Table View
+            </button>
+            <button class="view-btn" id="listViewBtn">
+              <i class="fas fa-list"></i> List View
+            </button>
+          </div>
+        </div>
+        
+        <!-- Table View -->
+        <div id="tableView" class="schedule-table-container">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+              <!-- Schedule data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- List View -->
+        <div id="listView" class="schedule-list">
+          <!-- List view data will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Class Details Modal -->
+  <div class="modal" id="classModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Class Details</h3>
+        <button class="modal-close" id="modalCloseBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="detail-row">
+          <div class="detail-label">Subject Code:</div>
+          <div class="detail-value" id="subjectCode">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Subject Name:</div>
+          <div class="detail-value" id="subjectName">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Professor:</div>
+          <div class="detail-value" id="professor">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Schedule:</div>
+          <div class="detail-value" id="schedule">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Room:</div>
+          <div class="detail-value" id="room">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Section:</div>
+          <div class="detail-value" id="section">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Units:</div>
+          <div class="detail-value" id="units">-</div>
+        </div>
+        <button class="btn btn-primary" id="viewSubjectBtn">View Subject Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Student Specific JavaScript -->
+  <script src="modules/js/student-schedule.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize student schedule
+      new StudentSchedule();
+    });
+  </script>
+</body>
+</html>

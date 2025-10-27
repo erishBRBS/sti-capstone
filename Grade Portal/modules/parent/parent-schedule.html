@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Parent Portal - Child's Schedule</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-schedule.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="parent-grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div class="nav-section-divider">Others</div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="Faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item sign-out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Child's Schedule</h1>
+        <p>View your child's class schedule and timetable</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Student Selector -->
+      <div class="student-selector">
+        <div class="student-info">
+          <div class="student-avatar">HY</div>
+          <div class="student-details">
+            <h3>Hadassa Yap</h3>
+            <p>IT Student - BS Information Technology</p>
+          </div>
+        </div>
+        <div>
+          <select class="student-select" id="studentSelect">
+            <option value="hadassa">Hadassa Yap - IT Student</option>
+            <option value="john">John Yap - BS Computer Science</option>
+            <option value="sarah">Sarah Yap - Senior High School</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-row">
+          <div class="filter-label">School Year & Term:</div>
+          <select id="term" class="filter-select">
+            <option selected>2024-2025 2nd Term Tertiary</option>
+            <option>2024-2025 1st Term Tertiary</option>
+            <option>2023-2024 2nd Term Tertiary</option>
+            <option>2023-2024 1st Term Tertiary</option>
+          </select>
+
+          <div class="filter-label">View Type:</div>
+          <select id="viewType" class="filter-select">
+            <option selected>Weekly View</option>
+            <option>List View</option>
+          </select>
+
+          <div class="filter-label">Day:</div>
+          <select id="day" class="filter-select">
+            <option selected>Entire Week</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Schedule Summary -->
+      <div class="schedule-summary">
+        <div class="summary-card">
+          <div class="summary-value">6</div>
+          <div class="summary-label">Total Subjects</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">18</div>
+          <div class="summary-label">Weekly Hours</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">2</div>
+          <div class="summary-label">Classes Today</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">5/6</div>
+          <div class="summary-label">Days with Classes</div>
+        </div>
+      </div>
+
+      <!-- Today's Classes -->
+      <div class="today-classes">
+        <div class="today-header">
+          <div class="today-title">Today's Classes</div>
+          <div class="today-date" id="todayDate">Saturday, June 21, 2025</div>
+        </div>
+        <div id="todayClasses">
+          <!-- Today's classes will be inserted here by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Weekly Schedule Card -->
+      <div class="schedule-card">
+        <div class="card-header">
+          <div class="card-title">Weekly Schedule</div>
+          <div class="view-selector">
+            <button class="view-btn active" id="tableViewBtn">
+              <i class="fas fa-table"></i> Table View
+            </button>
+            <button class="view-btn" id="listViewBtn">
+              <i class="fas fa-list"></i> List View
+            </button>
+          </div>
+        </div>
+        
+        <!-- Table View -->
+        <div id="tableView" class="schedule-table-container">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody">
+              <!-- Schedule data will be inserted here by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- List View -->
+        <div id="listView" class="schedule-list">
+          <!-- List view content will be generated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Class Details Modal -->
+  <div class="modal" id="classModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Class Details</h3>
+        <button class="modal-close" id="modalClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="detail-row">
+          <div class="detail-label">Subject:</div>
+          <div class="detail-value" id="subjectName">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Professor:</div>
+          <div class="detail-value" id="professorName">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Schedule:</div>
+          <div class="detail-value" id="classSchedule">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Room:</div>
+          <div class="detail-value" id="classRoom">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Units:</div>
+          <div class="detail-value" id="classUnits">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Current Grade:</div>
+          <div class="detail-value" id="classGrade">-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-schedule.js"></script>
+</body>
+</html>

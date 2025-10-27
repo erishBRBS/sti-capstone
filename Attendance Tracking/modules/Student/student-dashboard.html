@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor - Student Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Student Specific CSS -->
+  <link rel="stylesheet" href="modules/css/student-dashboard.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="student-dashboard.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-gate-attendance.html" class="nav-item">
+        <i class="fas fa-door-open"></i>
+        <span>Gate Attendance</span>
+      </a>
+      <a href="student-subject-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Subject Attendance</span>
+      </a>
+      <a href="student-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="student-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="student-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="login.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Student Dashboard</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Stats Overview -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="totalClasses">8</div>
+            <div class="stat-label">Total Classes</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="attendanceStatus">Present</div>
+            <div class="stat-label">Today's Status</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="overallAttendance">92%</div>
+            <div class="stat-label">Overall Attendance</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="stat-info">
+            <div class="stat-value" id="newAnnouncements">5</div>
+            <div class="stat-label">New Announcements</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Quick Actions</div>
+        </div>
+        
+        <div class="quick-actions">
+          <a href="student-gate-attendance.html" class="action-btn" data-action="gate-attendance">
+            <div class="action-icon">
+              <i class="fas fa-door-open"></i>
+            </div>
+            <span>Gate Attendance</span>
+          </a>
+          
+          <a href="student-subject-attendance.html" class="action-btn" data-action="subject-attendance">
+            <div class="action-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <span>Subject Attendance</span>
+          </a>
+          
+          <a href="student-schedule.html" class="action-btn" data-action="schedule">
+            <div class="action-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <span>Schedule</span>
+          </a>
+          
+          <a href="student-announcements.html" class="action-btn" data-action="announcements">
+            <div class="action-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <span>Announcements</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Today's Schedule -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-calendar-day"></i> Today's Schedule
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Room</th>
+                <th>Professor</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="todaysSchedule">
+              <tr>
+                <td>Mathematics</td>
+                <td>Room 204</td>
+                <td>Prof. Santos</td>
+                <td>8:00 AM - 9:30 AM</td>
+                <td><span class="badge badge-success">Present</span></td>
+              </tr>
+              <tr>
+                <td>Science</td>
+                <td>Room 305</td>
+                <td>Dr. Rodriguez</td>
+                <td>10:00 AM - 11:30 AM</td>
+                <td><span class="badge badge-success">Present</span></td>
+              </tr>
+              <tr>
+                <td>Programming</td>
+                <td>Lab 102</td>
+                <td>Prof. Lee</td>
+                <td>1:00 PM - 2:30 PM</td>
+                <td><span class="badge badge-info">Upcoming</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Announcements -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-bullhorn"></i> Latest Announcements
+          </div>
+          <a href="student-announcements.html" class="view-all">View All</a>
+        </div>
+        
+        <div id="announcementsList">
+          <div class="announcement-item">
+            <div class="announcement-title">Math Quiz Next Week</div>
+            <div class="announcement-meta">Posted by Prof. Santos • 2 hours ago</div>
+            <p>There will be a quiz on Calculus next Monday. Please review chapters 3-5. Bring your scientific calculators.</p>
+          </div>
+          
+          <div class="announcement-item">
+            <div class="announcement-title">Library Hours Extended</div>
+            <div class="announcement-meta">Posted by Administration • 1 day ago</div>
+            <p>Library hours have been extended until 9 PM during finals week. Group study rooms are available for reservation.</p>
+          </div>
+          
+          <div class="announcement-item">
+            <div class="announcement-title">Student Council Elections</div>
+            <div class="announcement-meta">Posted by Student Affairs • 2 days ago</div>
+            <p>Student council elections will be held next Friday in the main auditorium. Cast your vote from 8 AM to 5 PM.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Student Specific JavaScript -->
+  <script src="modules/js/student-dashboard.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      if (typeof Utils !== 'undefined' && Utils.setCurrentDate) {
+        Utils.setCurrentDate();
+      }
+      
+      // Initialize theme manager
+      if (typeof ThemeManager !== 'undefined') {
+        new ThemeManager();
+      }
+      
+      // Initialize sidebar manager
+      if (typeof SidebarManager !== 'undefined') {
+        new SidebarManager();
+      }
+      
+      // Initialize student dashboard
+      if (typeof StudentDashboard !== 'undefined') {
+        new StudentDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

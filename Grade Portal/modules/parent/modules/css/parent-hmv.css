@@ -1,0 +1,297 @@
+/* HMV Page Specific Styles */
+
+/* Student Selector */
+.student-selector {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.student-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--secondary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.student-details h3 {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.student-details p {
+  font-size: 14px;
+  color: var(--medium-gray);
+}
+
+.student-select {
+  padding: 10px 15px;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius);
+  background-color: var(--white);
+  color: var(--dark-gray);
+  font-size: 14px;
+  min-width: 250px;
+}
+
+/* Content Area */
+.content {
+  padding: 0;
+  flex: 1;
+}
+
+.content-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s, transform 0.2s;
+  border-left: 4px solid var(--primary-blue);
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.content-card h2 {
+  font-size: 22px;
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.content-card h3 {
+  font-size: 18px;
+  color: var(--primary-blue);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.content-card p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+}
+
+.hymn-section {
+  text-align: center;
+}
+
+.hymn-text {
+  white-space: pre-line;
+  line-height: 1.8;
+  font-style: italic;
+  padding: 24px;
+  background-color: var(--light-blue);
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+  font-size: 16px;
+  color: var(--primary-blue);
+  border: 1px solid var(--light-blue);
+}
+
+/* Mission Vision Grid */
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.mission-card, .vision-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+  border-top: 4px solid var(--primary-blue);
+}
+
+.mission-card:hover, .vision-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vision-card {
+  border-top-color: var(--accent-yellow);
+}
+
+.mission-icon, .vision-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--primary-blue);
+}
+
+.vision-icon {
+  color: var(--accent-yellow);
+}
+
+.mission-card h3, .vision-card h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: var(--primary-blue);
+}
+
+.mission-card p, .vision-card p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: var(--dark-gray);
+}
+
+/* Hymn Audio Controls */
+.hymn-audio {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none;
+}
+
+.action-btn:hover {
+  background-color: var(--secondary-blue);
+  transform: translateY(-2px);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+/* Audio Notification */
+.audio-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-blue);
+  color: white;
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  transition: opacity 0.3s;
+  font-weight: 500;
+}
+
+/* Print Styles */
+@media print {
+  .sidebar, .header-actions, .menu-toggle, .action-btn, .student-selector {
+    display: none !important;
+  }
+  
+  .main-content {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  
+  .content-card, .mission-card, .vision-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .hymn-text {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .mission-vision-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .student-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .student-select {
+    min-width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+  }
+  
+  .content-card, .mission-card, .vision-card {
+    padding: 20px;
+  }
+  
+  .hymn-audio {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 15px;
+  }
+  
+  .hymn-text {
+    padding: 16px;
+    font-size: 14px;
+  }
+  
+  .mission-icon, .vision-icon {
+    font-size: 36px;
+  }
+  
+  .content-card h2 {
+    font-size: 20px;
+  }
+  
+  .content-card h3 {
+    font-size: 18px;
+  }
+}

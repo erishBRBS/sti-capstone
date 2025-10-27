@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Student Portal - About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- About CSS -->
+  <link rel="stylesheet" href="modules/css/about.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">IT Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Grades</span>
+      </a>
+      <a href="schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Class Schedule</span>
+      </a>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div style="padding: 14px 24px; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 10px;">
+        Others
+      </div>
+      <a href="hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="about.html" class="nav-item active">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item" style="margin-top: 20px;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>About</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>About STI Student Portal</h2>
+        <p>Your gateway to academic information and campus resources</p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Grade Tracking</h3>
+          <p>View your academic performance with detailed grade breakdowns and progress tracking</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Class Schedule</h3>
+          <p>Access your daily schedule with room assignments and professor information</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3>Announcements</h3>
+          <p>Stay updated with the latest campus news, events, and important notices</p>
+        </div>
+      </div>
+
+      <!-- About Information -->
+      <div class="content-card">
+        <h2>About the Portal</h2>
+        <p>The STI Student Portal keeps your necessary student information in this free and easy-to-use platform. With the STI Student Portal, you can now:</p>
+        
+        <ul class="info-list">
+          <li>View your grades with just a quick tap of a button</li>
+          <li>Know your day-to-day class schedule complete with classroom details and professors</li>
+          <li>Get the latest STI news from all over the STI network</li>
+          <li>Access important academic resources and information</li>
+        </ul>
+        
+        <div class="version-info">
+          <div class="version-card">
+            <div class="version-label">Current Version</div>
+            <div class="version-value">1.2.7</div>
+          </div>
+          <div class="version-card">
+            <div class="version-label">Last Updated</div>
+            <div class="version-value">Feb 11, 2021</div>
+          </div>
+          <div class="version-card">
+            <div class="version-label">Developer</div>
+            <div class="version-value">STI College</div>
+          </div>
+        </div>
+        
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+          <p>If you encounter any issues or have questions about the student portal, please contact:</p>
+          <ul class="info-list">
+            <li><strong>STI Bacoor Registrar:</strong> (046) 417-8233</li>
+            <li><strong>IT Support:</strong> itsupport@stibacoor.edu.ph</li>
+            <li><strong>Student Affairs:</strong> studentaffairs@stibacoor.edu.ph</li>
+          </ul>
+          <p><strong>Office Hours:</strong> Monday to Friday, 8:00 AM - 5:00 PM</p>
+        </div>
+        
+        <h3>Disclaimer</h3>
+        <div class="disclaimer-box">
+          <p>
+            The information contained here is not real-time and for information purposes only. The information may not be up to date and requires further validation from the School Registrar. If you have further questions, please do not hesitate to get in touch with the School Registrar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About JS -->
+  <script src="modules/js/about.js"></script>
+</body>
+</html>

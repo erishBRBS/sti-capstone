@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Add New Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Admin Specific CSS -->
+  <link rel="stylesheet" href="modules/css/admin-add-admin.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">Administrator</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="admin-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="admin-manage-students.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Manage Students</span>
+      </a>
+      <a href="admin-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="admin-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="admin-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="admin-add-admin.html" class="nav-item active">
+        <i class="fas fa-user-plus"></i>
+        <span>Add New Admin</span>
+      </a>
+      <a href="admin-reset-password.html" class="nav-item">
+        <i class="fas fa-key"></i>
+        <span>Reset Password</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Add New Admin</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Register New Admin -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-user-plus"></i> Register New Admin
+          </div>
+        </div>
+        
+        <form class="form-grid" id="adminForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Enter full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" class="form-control" placeholder="+63 912 345 6789">
+          </div>
+          
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" class="form-control" required>
+              <option value="">Select Role</option>
+              <option value="Super Admin">Super Admin</option>
+              <option value="Moderator">Moderator</option>
+              <option value="Viewer">Viewer</option>
+            </select>
+          </div>
+          
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="profilePic">Profile Picture</label>
+            <input type="file" id="profilePic" class="form-control" accept="image/*">
+            <div class="profile-picture">
+              <img src="https://via.placeholder.com/120" alt="Profile Preview" class="profile-img" id="profilePreview">
+              <label for="profilePic" class="profile-overlay">
+                <i class="fas fa-camera"></i>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Create Admin Account
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Existing Admins -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-users"></i> Existing Admins
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="adminTable">
+            <thead>
+              <tr>
+                <th>Profile</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://via.placeholder.com/40" alt="Admin" class="profile-img" style="width: 40px; height: 40px;"></td>
+                <td>Juan Dela Cruz</td>
+                <td>juan.dela.cruz@university.edu</td>
+                <td>+63 912 345 6789</td>
+                <td><span class="role-badge role-super">Super Admin</span></td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" onclick="editAdmin(0)"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" onclick="deleteAdmin(0)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="https://via.placeholder.com/40" alt="Admin" class="profile-img" style="width: 40px; height: 40px;"></td>
+                <td>Maria Santos</td>
+                <td>maria.santos@university.edu</td>
+                <td>+63 917 890 1234</td>
+                <td><span class="role-badge role-moderator">Moderator</span></td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" onclick="editAdmin(1)"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" onclick="deleteAdmin(1)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><img src="https://via.placeholder.com/40" alt="Admin" class="profile-img" style="width: 40px; height: 40px;"></td>
+                <td>Robert Lim</td>
+                <td>robert.lim@university.edu</td>
+                <td>+63 918 567 4321</td>
+                <td><span class="role-badge role-viewer">Viewer</span></td>
+                <td class="action-cell">
+                  <button class="action-btn edit-btn" onclick="editAdmin(2)"><i class="fas fa-edit"></i></button>
+                  <button class="action-btn delete-btn" onclick="deleteAdmin(2)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Admin Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Admin</h2>
+      </div>
+      
+      <form class="form-grid" id="editForm">
+        <input type="hidden" id="editId">
+        
+        <div class="form-group">
+          <label for="editName">Full Name</label>
+          <input type="text" id="editName" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="editEmail">Email Address</label>
+          <input type="email" id="editEmail" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="editMobile">Mobile Number</label>
+          <input type="tel" id="editMobile" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="editRole">Role</label>
+          <select id="editRole" class="form-control">
+            <option value="Super Admin">Super Admin</option>
+            <option value="Moderator">Moderator</option>
+            <option value="Viewer">Viewer</option>
+          </select>
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label for="editProfilePic">Update Profile Picture</label>
+          <input type="file" id="editProfilePic" class="form-control" accept="image/*">
+          <div class="profile-picture">
+            <img src="https://via.placeholder.com/120" alt="Profile Preview" class="profile-img" id="editProfilePreview">
+            <label for="editProfilePic" class="profile-overlay">
+              <i class="fas fa-camera"></i>
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Admin Specific JavaScript -->
+  <script src="modules/js/admin-add-admin.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      if (typeof Utils !== 'undefined' && Utils.setCurrentDate) {
+        Utils.setCurrentDate();
+      }
+      
+      // Initialize theme manager
+      if (typeof ThemeManager !== 'undefined') {
+        new ThemeManager();
+      }
+      
+      // Initialize sidebar manager
+      if (typeof SidebarManager !== 'undefined') {
+        new SidebarManager();
+      }
+      
+      // Initialize admin add admin
+      if (typeof AdminAddAdmin !== 'undefined') {
+        new AdminAddAdmin();
+      }
+    });
+  </script>
+</body>
+</html>

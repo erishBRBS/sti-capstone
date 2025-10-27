@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Grades Management</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Grades Management CSS -->
+  <link rel="stylesheet" href="modules/css/grades-management.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item active">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="Logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Grades Management</h1>
+        <p>Review and approve teacher-submitted grades</p>
+      </div>
+      
+      <div class="header-actions">
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Quick search..." id="quickSearch">
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Alert Messages -->
+      <div id="alertContainer"></div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="stat-value">2,847</div>
+          <div class="stat-label">Total Grades Entered</div>
+          <div class="stat-change" style="color: #43a047;">↗ 92% completion</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-value">156</div>
+          <div class="stat-label">Pending Grades</div>
+          <div class="stat-change" style="color: #e6b400;">Awaiting input</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-value">3.42</div>
+          <div class="stat-label">Average GPA</div>
+          <div class="stat-change" style="color: #43a047;">↗ +0.15 from last sem</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon red-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="stat-value">12</div>
+          <div class="stat-label">Pending Approval</div>
+          <div class="stat-change" style="color: #e53935;">Need review</div>
+        </div>
+      </div>
+
+      <!-- Grade Management Tabs -->
+      <div class="tabs-container">
+        <div class="tabs-header">
+          <button class="tab-btn active" data-tab="grade-approval">
+            <i class="fas fa-check-circle"></i>
+            Grade Approval
+            <span class="tab-badge">12</span>
+          </button>
+          <button class="tab-btn" data-tab="class-grades">
+            <i class="fas fa-users"></i>
+            Class Grades
+          </button>
+          <button class="tab-btn" data-tab="individual-grades">
+            <i class="fas fa-user"></i>
+            Individual Student
+          </button>
+          <button class="tab-btn" data-tab="bulk-entry">
+            <i class="fas fa-file-upload"></i>
+            Bulk Entry
+          </button>
+        </div>
+
+        <!-- Grade Approval Tab -->
+        <div id="grade-approval" class="tab-content active">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Grade Approval</div>
+              <div class="view-all">Review and approve teacher-submitted grades</div>
+            </div>
+            
+            <div class="approval-controls">
+              <div class="approval-stats">
+                <h3>Pending Grade Approvals</h3>
+                <p>Review and approve teacher-submitted grades by section</p>
+              </div>
+              <div class="approval-filters">
+                <select class="form-control" id="approvalFilter">
+                  <option>All Submissions</option>
+                  <option>This Week</option>
+                  <option>Last Week</option>
+                  <option>This Month</option>
+                </select>
+                <button class="btn btn-success" id="bulkApproveBtn">
+                  <i class="fas fa-check-double"></i> Bulk Approve
+                </button>
+              </div>
+            </div>
+
+            <!-- Approval Queue -->
+            <div id="approvalQueue" class="approval-queue">
+              <!-- Approval items will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Class Grades Tab -->
+        <div id="class-grades" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Class Grades</div>
+              <div class="view-all">View grades by class and section</div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Course</label>
+                <select id="courseSelect" class="form-control">
+                  <option value="">Select Course</option>
+                  <option value="CS101">CS101 - Programming Fundamentals</option>
+                  <option value="CS201">CS201 - Data Structures</option>
+                  <option value="IT101">IT101 - Computer Systems</option>
+                  <option value="BA101">BA101 - Business Ethics</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Section</label>
+                <select id="sectionSelect" class="form-control">
+                  <option value="">Select Section</option>
+                  <option value="A">Section A</option>
+                  <option value="B">Section B</option>
+                  <option value="C">Section C</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Grade Component</label>
+                <select id="gradeComponentSelect" class="form-control">
+                  <option value="all">All Components</option>
+                  <option value="prelim">Prelim (30%)</option>
+                  <option value="midterm">Midterm (30%)</option>
+                  <option value="final">Final (40%)</option>
+                  <option value="quiz">Quizzes</option>
+                  <option value="project">Projects</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="action-buttons-row">
+              <button class="btn btn-primary" id="exportGradesBtn">
+                <i class="fas fa-download"></i> Export Grades
+              </button>
+              <button class="btn btn-secondary" id="printGradesBtn">
+                <i class="fas fa-print"></i> Print Report
+              </button>
+            </div>
+            
+            <div id="classGradesContainer">
+              <div class="empty-state">
+                <i class="fas fa-book-open"></i>
+                <p>Select a course and section to view grades</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Individual Student Grades Tab -->
+        <div id="individual-grades" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Individual Student Grades</div>
+              <div class="view-all">View and manage individual student grades</div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Search Student</label>
+                <div class="search-container">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" id="studentSearchGrades" placeholder="Search by name or student ID..." class="search-input">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Academic Year</label>
+                <select class="form-control" id="academicYearSelect">
+                  <option value="2024">2024-2025</option>
+                  <option value="2023">2023-2024</option>
+                  <option value="2022">2022-2023</option>
+                </select>
+              </div>
+            </div>
+            
+            <div id="studentGradesContainer">
+              <div class="empty-state">
+                <i class="fas fa-user-search"></i>
+                <p>Search for a student to view their grades</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bulk Entry Tab -->
+        <div id="bulk-entry" class="tab-content">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Bulk Grade Entry</div>
+              <div class="view-all">Upload grades in bulk using templates</div>
+            </div>
+            
+            <div class="bulk-upload-container">
+              <div class="upload-section">
+                <h3>Bulk Grade Upload</h3>
+                <div class="form-group">
+                  <label class="form-label">Upload Type</label>
+                  <select class="form-control" id="uploadType">
+                    <option>Grade Sheet Upload</option>
+                    <option>Quiz Scores</option>
+                    <option>Project Grades</option>
+                    <option>Final Grades</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">File Upload</label>
+                  <div class="file-upload" id="bulkUploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drop your Excel/CSV file here or click to browse</p>
+                    <p class="file-upload-info">Supported formats: .xlsx, .csv (Max 10MB)</p>
+                    <input type="file" accept=".csv,.xlsx,.xls" class="hidden" id="bulkGradeFile">
+                  </div>
+                </div>
+                <div class="upload-actions">
+                  <button class="btn btn-primary" id="processBulkGradesBtn">Process Upload</button>
+                  <button class="btn btn-secondary" id="downloadTemplateBtn">Download Template</button>
+                </div>
+              </div>
+
+              <div class="upload-instructions">
+                <h3>Upload Instructions</h3>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle"></i>
+                  <div>
+                    <h4>File Format Requirements</h4>
+                    <ul>
+                      <li>Use the provided template format</li>
+                      <li>Student ID column is mandatory</li>
+                      <li>Grade values must be numerical</li>
+                      <li>Missing grades will be marked as incomplete</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="recent-uploads">
+                  <h4>Recent Uploads</h4>
+                  <div class="upload-list">
+                    <div class="upload-item">
+                      <div class="upload-details">
+                        <p class="upload-name">CS101_Midterm_Grades.xlsx</p>
+                        <p class="upload-meta">Uploaded 2 hours ago • 45 records</p>
+                      </div>
+                      <span class="status-badge status-approved">Success</span>
+                    </div>
+                    <div class="upload-item">
+                      <div class="upload-details">
+                        <p class="upload-name">IT101_Quiz_Scores.csv</p>
+                        <p class="upload-meta">Uploaded yesterday • 38 records</p>
+                      </div>
+                      <span class="status-badge status-pending">Partial</span>
+                    </div>
+                    <div class="upload-item">
+                      <div class="upload-details">
+                        <p class="upload-name">BA101_Projects.xlsx</p>
+                        <p class="upload-meta">Uploaded 3 days ago • 52 records</p>
+                      </div>
+                      <span class="status-badge status-approved">Success</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grade Review Modal -->
+  <div class="modal" id="gradeReviewModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Review Grade Submission</h3>
+        <button class="modal-close" id="closeGradeReviewModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Review modal content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Grades Management JS -->
+  <script src="modules/js/grades-management.js"></script>
+</body>
+</html>

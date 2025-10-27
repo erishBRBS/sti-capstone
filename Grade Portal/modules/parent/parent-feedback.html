@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Parent Portal - Feedback</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-feedback.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="parent-grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div class="nav-section-divider">Others</div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item active">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="parent-faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item sign-out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Feedback</h1>
+        <p>Share your thoughts and help us improve</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="dashboard">
+      <!-- Student Selector -->
+      <div class="student-selector">
+        <div class="student-info">
+          <div class="student-avatar">HY</div>
+          <div class="student-details">
+            <h3>Hadassa Yap</h3>
+            <p>IT Student - BS Information Technology</p>
+          </div>
+        </div>
+        <div>
+          <select class="student-select" id="studentSelect">
+            <option value="hadassa">Hadassa Yap - IT Student</option>
+            <option value="john">John Yap - BS Computer Science</option>
+            <option value="sarah">Sarah Yap - Senior High School</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="content-card">
+          <h2>We'd Love Your Feedback!</h2>
+          <p class="feedback-intro">Your feedback helps us improve the parent portal experience for everyone. Please share your thoughts, suggestions, or report any issues you've encountered.</p>
+          
+          <form class="feedback-form" id="feedbackForm">
+            <div class="form-group">
+              <label for="feedbackType" class="form-label">Select Feedback Type</label>
+              <select id="feedbackType" name="feedbackType" class="form-select" required>
+                <option value="" disabled selected>Select a feedback type</option>
+                <option value="look">On how I look</option>
+                <option value="speed">My Speed Performance</option>
+                <option value="usability">Your Experience on my Usability</option>
+                <option value="error">Reporting an Error/Crash</option>
+                <option value="info">Availability/Correctness and Information</option>
+                <option value="features">Additional Features</option>
+                <option value="others">Others</option>
+              </select>
+              <div class="error-message" id="typeError"></div>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackMessage" class="form-label">Feedback Message</label>
+              <textarea id="feedbackMessage" name="feedbackMessage" class="form-textarea" placeholder="Please share your detailed feedback here..." rows="6"></textarea>
+              <div class="character-counter" id="charCounter">0 characters</div>
+              <div class="error-message" id="messageError"></div>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Submit Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-feedback.js"></script>
+</body>
+</html>

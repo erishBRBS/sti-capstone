@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student - Announcements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Student Specific CSS -->
+  <link rel="stylesheet" href="modules/css/student-announcements.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JC</div>
+      <div class="user-details">
+        <div class="user-name">Juan Dela Cruz</div>
+        <div class="user-role">Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="student-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-gate-attendance.html" class="nav-item">
+        <i class="fas fa-door-open"></i>
+        <span>Gate Attendance</span>
+      </a>
+      <a href="student-subject-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Subject Attendance</span>
+      </a>
+      <a href="student-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="student-announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="student-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="login.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Announcements</h1>
+        <p id="todayDate">View general and subject-specific announcements</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">JC</div>
+          <div>Juan Dela Cruz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Filter Section -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Filter Announcements</div>
+        </div>
+        
+        <div class="filter-grid">
+          <div class="form-group">
+            <label for="filterType">Announcement Type</label>
+            <select id="filterType" class="form-control">
+              <option value="">All Types</option>
+              <option value="General">General Announcements</option>
+              <option value="Subject">Subject-Specific</option>
+              <option value="Event">School Events</option>
+              <option value="Holiday">Holidays</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="filterSubject">Filter by Subject</label>
+            <select id="filterSubject" class="form-control">
+              <option value="">All Subjects</option>
+              <option value="Math">Math</option>
+              <option value="Science">Science</option>
+              <option value="English">English</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Database Management">Database Management</option>
+              <option value="Programming Fundamentals">Programming Fundamentals</option>
+              <option value="Network Administration">Network Administration</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="searchBox">Search</label>
+            <input type="text" id="searchBox" class="form-control" placeholder="Search by keyword...">
+          </div>
+          
+          <div class="form-group" style="align-self: flex-end;">
+            <button class="btn btn-primary" id="applyFilterBtn">
+              <i class="fas fa-filter"></i> Apply Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Announcement List -->
+      <div id="announcementList" class="announcements-container"></div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Student Specific JavaScript -->
+  <script src="modules/js/student-announcements.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize student announcements
+      new StudentAnnouncements();
+    });
+  </script>
+</body>
+</html>

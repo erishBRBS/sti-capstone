@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Student Portal - FAQs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- FAQs CSS -->
+  <link rel="stylesheet" href="modules/css/faqs.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">IT Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Grades</span>
+      </a>
+      <a href="schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Class Schedule</span>
+      </a>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div style="padding: 14px 24px; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 10px;">
+        Others
+      </div>
+      <a href="hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="faqs.html" class="nav-item active">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item" style="margin-top: 20px;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>FAQs</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about the STI Student Portal</p>
+      </div>
+
+      <!-- Search Section -->
+      <div class="search-section">
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="faqSearch" class="search-input" placeholder="Search for questions...">
+        </div>
+      </div>
+
+      <!-- FAQ Categories -->
+      <div class="faq-categories">
+        <button class="category-btn active" data-category="all">All Questions</button>
+        <button class="category-btn" data-category="login">Login Issues</button>
+        <button class="category-btn" data-category="grades">Grades</button>
+        <button class="category-btn" data-category="schedule">Schedule</button>
+        <button class="category-btn" data-category="technical">Technical</button>
+      </div>
+
+      <!-- FAQ Content -->
+      <div class="content-card">
+        <div class="faq-container" id="faqContainer">
+          <!-- FAQ items will be populated by JavaScript -->
+        </div>
+        
+        <div class="contact-section">
+          <strong>Can't find what you're looking for?</strong><br>
+          Send us an email at <a href="mailto:oneapp@sti.edu">oneapp@sti.edu</a> and we'll be happy to assist you with your other concerns.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs JS -->
+  <script src="modules/js/faqs.js"></script>
+</body>
+</html>

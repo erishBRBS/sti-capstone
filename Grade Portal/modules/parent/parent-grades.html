@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Parent Portal - Child's Grades</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-grades.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="parent-grades.html" class="nav-item active">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div class="nav-section-divider">Others</div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="parent-faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item sign-out">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Child's Grades</h1>
+        <p>Monitor your child's academic performance</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Student Selector -->
+      <div class="student-selector">
+        <div class="student-info">
+          <div class="student-avatar">HY</div>
+          <div class="student-details">
+            <h3>Hadassa Yap</h3>
+            <p>IT Student - BS Information Technology</p>
+          </div>
+        </div>
+        <div>
+          <select class="student-select" id="studentSelect">
+            <option value="hadassa">Hadassa Yap - IT Student</option>
+            <option value="john">John Yap - BS Computer Science</option>
+            <option value="sarah">Sarah Yap - Senior High School</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters">
+        <div class="filter-row">
+          <div class="filter-label">School Year & Term:</div>
+          <select id="term" class="filter-select">
+            <option selected>2024-2025 2nd Term Tertiary</option>
+            <option>2024-2025 1st Term Tertiary</option>
+            <option>2023-2024 2nd Term Tertiary</option>
+            <option>2023-2024 1st Term Tertiary</option>
+          </select>
+
+          <div class="filter-label">Grade Level:</div>
+          <select id="gradeLevel" class="filter-select">
+            <option selected>All Levels</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+          </select>
+
+          <div class="filter-label">Status:</div>
+          <select id="status" class="filter-select">
+            <option selected>All Status</option>
+            <option>Passed</option>
+            <option>In Progress</option>
+            <option>Failed</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Academic Summary -->
+      <div class="academic-summary">
+        <div class="summary-card">
+          <div class="summary-value">3.25</div>
+          <div class="summary-label">Current GPA</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">85.5%</div>
+          <div class="summary-label">Average Grade</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-value">6</div>
+          <div class="summary-label">Subjects This Term</div>
+        </div>
+      </div>
+
+      <!-- Current Term Grades -->
+      <div class="grades-card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Current Term Grades</div>
+            <div class="card-subtitle">2024-2025 2nd Term Tertiary</div>
+          </div>
+        </div>
+        <table class="grades-table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Professor</th>
+              <th>Prelim</th>
+              <th>Midterm</th>
+              <th>Finals</th>
+              <th>Final Grade</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="gradesBody">
+            <!-- Grade data will be inserted here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Previous Term Grades -->
+      <div class="grades-card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Previous Term Grades</div>
+            <div class="card-subtitle">2024-2025 1st Term Tertiary</div>
+          </div>
+        </div>
+        <table class="grades-table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Professor</th>
+              <th>Prelim</th>
+              <th>Midterm</th>
+              <th>Finals</th>
+              <th>Final Grade</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="previousGradesBody">
+            <!-- Previous grade data will be inserted here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grade Details Modal -->
+  <div class="modal" id="gradeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Grade Details</h3>
+        <button class="modal-close" id="modalClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="detail-row">
+          <div class="detail-label">Subject:</div>
+          <div class="detail-value" id="subjectName">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Professor:</div>
+          <div class="detail-value" id="professorName">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Schedule:</div>
+          <div class="detail-value" id="subjectSchedule">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Room:</div>
+          <div class="detail-value" id="subjectRoom">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Units:</div>
+          <div class="detail-value" id="subjectUnits">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Final Grade:</div>
+          <div class="detail-value" id="finalGrade">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Status:</div>
+          <div class="detail-value" id="gradeStatus">-</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label">Grade Breakdown:</div>
+          <div class="detail-value">
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Percentage</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody id="breakdownBody">
+                <!-- Grade breakdown will be inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-grades.js"></script>
+</body>
+</html>

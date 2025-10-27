@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STI Bacoor - Manage Students</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  <link rel="stylesheet" href="../../shared/css/alerts.css">
+  
+  <!-- Admin Specific CSS -->
+  <link rel="stylesheet" href="modules/css/admin-manage-students.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">Administrator</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="admin-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="admin-manage-students.html" class="nav-item active">
+        <i class="fas fa-user-cog"></i>
+        <span>Manage Students</span>
+      </a>
+      <a href="admin-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="admin-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="admin-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="admin-add-admin.html" class="nav-item">
+        <i class="fas fa-user-plus"></i>
+        <span>Add New Admin</span>
+      </a>
+      <a href="admin-reset-password.html" class="nav-item">
+        <i class="fas fa-key"></i>
+        <span>Reset Password</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Manage Students</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Register Student Form -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Register New Student</div>
+        </div>
+        
+        <form class="form-grid" id="registerForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Enter full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" class="form-control" placeholder="Enter student ID" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="course">Course</label>
+            <select id="course" class="form-control" required>
+              <option value="">Select Course</option>
+              <option value="BSIT">BSIT</option>
+              <option value="BSED">BSED</option>
+              <option value="BSCS">BSCS</option>
+              <option value="BSBA">BSBA</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="yearSection">Year & Section</label>
+            <input type="text" id="yearSection" class="form-control" placeholder="e.g., 2nd Year - Section A" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="text" id="contact" class="form-control" placeholder="Enter contact number" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="rfid">RFID Code</label>
+            <input type="text" id="rfid" class="form-control" placeholder="Scan or enter RFID code" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="faceImage">Upload Face Image</label>
+            <input type="file" id="faceImage" class="form-control" accept="image/*" required>
+          </div>
+          
+          <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Register Student
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Export Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-success" id="exportCSV">
+          <i class="fas fa-file-csv"></i> Export CSV
+        </button>
+        <button class="btn btn-secondary" id="exportExcel">
+          <i class="fas fa-file-excel"></i> Export Excel
+        </button>
+      </div>
+
+      <!-- Student List Table -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Student Records</div>
+          <div class="records-info">
+            Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> students
+          </div>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="filter-section">
+          <div class="filter-grid">
+            <div class="form-group">
+              <label for="searchInput">Search by Name or ID</label>
+              <input type="text" id="searchInput" class="form-control" placeholder="Enter name or student ID">
+            </div>
+            
+            <div class="form-group">
+              <label for="filterCourse">Course</label>
+              <select id="filterCourse" class="form-control">
+                <option value="">All Courses</option>
+                <option value="BSIT">BSIT</option>
+                <option value="BSED">BSED</option>
+                <option value="BSCS">BSCS</option>
+                <option value="BSBA">BSBA</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="filterSection">Section</label>
+              <select id="filterSection" class="form-control">
+                <option value="">All Sections</option>
+                <option value="A">Section A</option>
+                <option value="B">Section B</option>
+                <option value="C">Section C</option>
+                <option value="D">Section D</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="filterYear">Year Level</label>
+              <select id="filterYear" class="form-control">
+                <option value="">All Years</option>
+                <option value="1st">1st Year</option>
+                <option value="2nd">2nd Year</option>
+                <option value="3rd">3rd Year</option>
+                <option value="4th">4th Year</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: flex-end;">
+              <button type="button" class="btn btn-primary" id="applyFilters" style="width: 100%">
+                <i class="fas fa-filter"></i> Apply Filters
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="studentTable">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Year & Section</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>RFID</th>
+                <th>Face ID</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody">
+              <!-- Student records will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="table-footer">
+          <div class="pagination-info">
+            Page <span id="currentPage">1</span> of <span id="totalPages">1</span>
+          </div>
+          <div class="pagination-controls">
+            <button class="btn btn-outline" id="prevPage" disabled>
+              <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <button class="btn btn-outline" id="nextPage" disabled>
+              Next <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Student Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="adminManageStudents.closeModal('edit')">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Student Information</h2>
+      </div>
+      
+      <form class="form-grid" id="editForm">
+        <div class="form-group">
+          <label for="editName">Full Name</label>
+          <input type="text" id="editName" class="form-control" value="John Doe" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editStudentId">Student ID</label>
+          <input type="text" id="editStudentId" class="form-control" value="2025-001" disabled>
+        </div>
+        
+        <div class="form-group">
+          <label for="editCourse">Course</label>
+          <select id="editCourse" class="form-control" required>
+            <option value="BSIT" selected>BSIT</option>
+            <option value="BSED">BSED</option>
+            <option value="BSCS">BSCS</option>
+            <option value="BSBA">BSBA</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="editSection">Year & Section</label>
+          <input type="text" id="editSection" class="form-control" value="3rd Year - A" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editEmail">Email</label>
+          <input type="email" id="editEmail" class="form-control" value="john.doe@university.edu" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editContact">Contact Number</label>
+          <input type="text" id="editContact" class="form-control" value="0912-345-6789" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editRfid">RFID Code</label>
+          <input type="text" id="editRfid" class="form-control" value="RFID12345" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editFaceImage">Update Face Image</label>
+          <input type="file" id="editFaceImage" class="form-control" accept="image/*">
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="adminManageStudents.closeModal('edit')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  <script src="../../shared/js/alerts.js"></script>
+  
+  <!-- Admin Specific JavaScript -->
+  <script src="modules/js/admin-manage-students.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize admin manage students
+      window.adminManageStudents = new AdminManageStudents();
+    });
+  </script>
+</body>
+</html>

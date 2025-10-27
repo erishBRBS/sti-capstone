@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Teacher Portal - Enhanced Grade Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="modules/css/uploadgrades.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Teacher Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="Dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="Schedule.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>My Schedule</span>
+      </a>
+      <a href="Students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>My Students</span>
+      </a>
+      
+      <div class="nav-section">Grades Management</div>
+      <a href="UploadGrades.html" class="nav-item active">
+        <i class="fas fa-edit"></i>
+        <span>Upload Grades</span>
+      </a>
+      <a href="ViewGrades.html" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>View Grades</span>
+      </a>
+      
+      <div class="nav-section">Communication</div>
+      <a href="Announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="ProfileSettings.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Profile Settings</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Enhanced Grade Management</h1>
+        <p>Submit and manage student grades efficiently</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">JD</div>
+          <div>John Doe</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle" style="font-size: 20px;"></i>
+        <div>
+          <strong>Enhanced Features:</strong> Manual grade entry with batch operations, file upload with validation, and import by section, year, and course.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Select Grade Management Method</div>
+        </div>
+        
+        <div class="method-selector">
+          <div class="method-card" data-action="selectMethod" data-method="manual">
+            <div class="method-icon">
+              <i class="fas fa-keyboard"></i>
+            </div>
+            <div class="method-title">Manual Entry</div>
+            <div class="method-description">Enter grades individually for each student</div>
+          </div>
+          
+          <div class="method-card" data-action="selectMethod" data-method="import">
+            <div class="method-icon">
+              <i class="fas fa-file-import"></i>
+            </div>
+            <div class="method-title">Import File</div>
+            <div class="method-description">Upload grades from CSV or Excel file</div>
+          </div>
+          
+          <div class="method-card" data-action="selectMethod" data-method="advanced">
+            <div class="method-icon">
+              <i class="fas fa-filter"></i>
+            </div>
+            <div class="method-title">Advanced Import</div>
+            <div class="method-description">Import grades by section, year, and course</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manual Entry Section -->
+      <div class="upload-section" id="manualSection">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Manual Grade Entry</div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Course <span class="required">*</span></label>
+              <select class="form-control" id="manualCourse">
+                <option value="">Select Course</option>
+                <option value="WEB101-A">WEB101 - Web Development (Section A)</option>
+                <option value="DB201-B">DB201 - Database Management (Section B)</option>
+                <option value="PROG101-C">PROG101 - Programming Fundamentals (Section C)</option>
+                <option value="NET301-D">NET301 - Network Administration (Section D)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Grading Period <span class="required">*</span></label>
+              <select class="form-control" id="manualPeriod">
+                <option value="">Select Period</option>
+                <option value="prelim">Prelims</option>
+                <option value="midterm">Midterms</option>
+                <option value="prefinal">Pre-Finals</option>
+                <option value="final">Finals</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="batch-actions">
+            <div>
+              <button class="btn btn-secondary" data-action="applyToAll" data-value="85">
+                <i class="fas fa-bolt"></i> Set All to 85
+              </button>
+              <button class="btn btn-secondary" data-action="applyToAll" data-value="90">
+                <i class="fas fa-bolt"></i> Set All to 90
+              </button>
+            </div>
+            <input type="text" class="search-box" id="searchStudent" placeholder="Search student...">
+          </div>
+          
+          <div id="manualGradesTable"></div>
+          
+          <div class="btn-group">
+            <button class="btn btn-success" data-action="submitManualGrades">
+              <i class="fas fa-check"></i> Submit Grades
+            </button>
+            <button class="btn btn-secondary" data-action="resetManualForm">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Import File Section -->
+      <div class="upload-section" id="importSection">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Import Grades from File</div>
+          </div>
+          
+          <div class="template-section">
+            <div class="template-title">
+              <i class="fas fa-download"></i> Download Template
+            </div>
+            <p style="margin-bottom: 12px; color: var(--medium-gray);">Download a template file to ensure your data is formatted correctly</p>
+            <div class="template-buttons">
+              <button class="btn btn-secondary" data-action="downloadTemplate" data-format="csv">
+                <i class="fas fa-file-csv"></i> Download CSV Template
+              </button>
+              <button class="btn btn-secondary" data-action="downloadTemplate" data-format="excel">
+                <i class="fas fa-file-excel"></i> Download Excel Template
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Course <span class="required">*</span></label>
+              <select class="form-control" id="importCourse">
+                <option value="">Select Course</option>
+                <option value="WEB101-A">WEB101 - Web Development (Section A)</option>
+                <option value="DB201-B">DB201 - Database Management (Section B)</option>
+                <option value="PROG101-C">PROG101 - Programming Fundamentals (Section C)</option>
+                <option value="NET301-D">NET301 - Network Administration (Section D)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Grading Period <span class="required">*</span></label>
+              <select class="form-control" id="importPeriod">
+                <option value="">Select Period</option>
+                <option value="prelim">Prelims</option>
+                <option value="midterm">Midterms</option>
+                <option value="prefinal">Pre-Finals</option>
+                <option value="final">Finals</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Upload File <span class="required">*</span></label>
+            <div class="file-upload-zone" id="dropZone">
+              <div class="upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div class="upload-text">Drop your file here or click to browse</div>
+              <div class="upload-hint">Supported formats: CSV, XLS, XLSX (Max 5MB)</div>
+              <input type="file" id="fileInput" accept=".csv,.xls,.xlsx" style="display: none;">
+            </div>
+            
+            <div class="file-info" id="fileInfo">
+              <div class="file-details">
+                <div class="file-icon">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div>
+                  <div id="fileName" style="font-weight: 600;"></div>
+                  <div id="fileSize" style="font-size: 14px; color: var(--medium-gray);"></div>
+                </div>
+              </div>
+              <button class="remove-file" data-action="removeFile">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div id="importPreview"></div>
+          
+          <div class="btn-group">
+            <button class="btn btn-success" data-action="uploadFile">
+              <i class="fas fa-upload"></i> Upload & Process
+            </button>
+            <button class="btn btn-secondary" data-action="resetImportForm">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Import Section -->
+      <div class="upload-section" id="advancedSection">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Advanced Grade Import</div>
+          </div>
+          
+          <div class="filter-section">
+            <div class="filter-title">
+              <i class="fas fa-filter"></i> Filter by Section, Year, and Course
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Academic Year</label>
+                <select class="form-control" id="academicYear">
+                  <option value="">Select Year</option>
+                  <option value="2023-2024">2023-2024</option>
+                  <option value="2022-2023">2022-2023</option>
+                  <option value="2021-2022">2021-2022</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Course</label>
+                <select class="form-control" id="advancedCourse">
+                  <option value="">Select Course</option>
+                  <option value="WEB101">WEB101 - Web Development</option>
+                  <option value="DB201">DB201 - Database Management</option>
+                  <option value="PROG101">PROG101 - Programming Fundamentals</option>
+                  <option value="NET301">NET301 - Network Administration</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Section</label>
+                <select class="form-control" id="section">
+                  <option value="">Select Section</option>
+                  <option value="A">Section A</option>
+                  <option value="B">Section B</option>
+                  <option value="C">Section C</option>
+                  <option value="D">Section D</option>
+                </select>
+              </div>
+            </div>
+            
+            <button class="btn btn-primary" data-action="loadFilteredStudents">
+              <i class="fas fa-search"></i> Load Students
+            </button>
+          </div>
+          
+          <div class="template-section">
+            <div class="template-title">
+              <i class="fas fa-download"></i> Download Template
+            </div>
+            <p style="margin-bottom: 12px; color: var(--medium-gray);">Download a template file for the filtered students</p>
+            <div class="template-buttons">
+              <button class="btn btn-secondary" data-action="downloadFilteredTemplate" data-format="csv">
+                <i class="fas fa-file-csv"></i> Download CSV Template
+              </button>
+              <button class="btn btn-secondary" data-action="downloadFilteredTemplate" data-format="excel">
+                <i class="fas fa-file-excel"></i> Download Excel Template
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Grading Period <span class="required">*</span></label>
+            <select class="form-control" id="advancedPeriod">
+              <option value="">Select Period</option>
+              <option value="prelim">Prelims</option>
+              <option value="midterm">Midterms</option>
+              <option value="prefinal">Pre-Finals</option>
+              <option value="final">Finals</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Upload File <span class="required">*</span></label>
+            <div class="file-upload-zone" id="advancedDropZone">
+              <div class="upload-icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <div class="upload-text">Drop your file here or click to browse</div>
+              <div class="upload-hint">Supported formats: CSV, XLS, XLSX (Max 5MB)</div>
+              <input type="file" id="advancedFileInput" accept=".csv,.xls,.xlsx" style="display: none;">
+            </div>
+            
+            <div class="file-info" id="advancedFileInfo">
+              <div class="file-details">
+                <div class="file-icon">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div>
+                  <div id="advancedFileName" style="font-weight: 600;"></div>
+                  <div id="advancedFileSize" style="font-size: 14px; color: var(--medium-gray);"></div>
+                </div>
+              </div>
+              <button class="remove-file" data-action="removeAdvancedFile">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div id="advancedImportPreview"></div>
+          
+          <div class="btn-group">
+            <button class="btn btn-success" data-action="uploadAdvancedFile">
+              <i class="fas fa-upload"></i> Upload & Process
+            </button>
+            <button class="btn btn-secondary" data-action="resetAdvancedForm">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="modules/js/uploadgrades.js"></script>
+</body>
+</html>

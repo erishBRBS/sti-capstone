@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STI Bacoor - Teacher Schedule</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Teacher Specific CSS -->
+  <link rel="stylesheet" href="modules/css/teacher-schedule.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">PS</div>
+      <div class="user-details">
+        <div class="user-name">Prof. Santos</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="teacher-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="teacher-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="teacher-students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student List</span>
+      </a>
+      <a href="teacher-schedule.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="teacher-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="teacher-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Class Schedule</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">PS</div>
+          <div>Prof. Santos</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Weekly Schedule -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-calendar-week"></i> Weekly Schedule
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="weeklyScheduleTable">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Year</th>
+                <th>Section</th>
+                <th>Room</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="weeklyScheduleBody">
+              <!-- Weekly schedule data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Filters for Attendance -->
+      <div class="card" id="filterSection" style="display: none;">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-filter"></i> Filter Students
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="filterName">Search by Name</label>
+            <input type="text" id="filterName" class="form-control" placeholder="Enter student name">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterYear">Filter by Year</label>
+            <input type="text" id="filterYear" class="form-control" placeholder="Filter by year">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterSectionInput">Filter by Section</label>
+            <input type="text" id="filterSectionInput" class="form-control" placeholder="Filter by section">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterStatus">Filter by Status</label>
+            <select id="filterStatus" class="form-control">
+              <option value="">All Status</option>
+              <option value="Present">Present</option>
+              <option value="Late">Late</option>
+              <option value="Absent">Absent</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attendance Table -->
+      <div class="card" id="attendanceSection" style="display: none;">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-users"></i> Student Attendance
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-success" id="saveAttendance">
+              <i class="fas fa-save"></i> Save Attendance
+            </button>
+            <button class="btn btn-primary" id="exportCSV">
+              <i class="fas fa-file-csv"></i> Export CSV
+            </button>
+            <button class="btn btn-secondary" id="exportExcel">
+              <i class="fas fa-file-excel"></i> Export Excel
+            </button>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="studentTable">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Section</th>
+                <th>Subject</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody">
+              <!-- Student data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Teacher Specific JavaScript -->
+  <script src="modules/js/teacher-schedule.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize teacher schedule
+      new TeacherSchedule();
+    });
+  </script>
+</body>
+</html>

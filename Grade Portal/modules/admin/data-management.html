@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Data Management</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Dashboard CSS -->
+  <link rel="stylesheet" href="modules/css/common.css">
+  <link rel="stylesheet" href="modules/css/dashboard.css">
+  <link rel="stylesheet" href="modules/css/data-management.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item active">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="page-title">
+        <h1>Data Management</h1>
+        <p>Import and export system data</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Management Content -->
+    <div class="data-management">
+      <!-- Tabs -->
+      <div class="data-tabs">
+        <button class="data-tab active" data-tab="import">Import Data</button>
+        <button class="data-tab" data-tab="export">Export Data</button>
+      </div>
+
+      <!-- Import Tab -->
+      <div class="tab-content active" id="import-tab">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-download"></i> Import Data
+            </div>
+          </div>
+          
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Import Guidelines:</strong>
+              <ul>
+                <li>Supported formats: CSV, XLSX, XLS</li>
+                <li>Maximum file size: 50MB</li>
+                <li>Ensure column headers match the template</li>
+                <li>Date format: YYYY-MM-DD</li>
+                <li>Review validation errors before completing import</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Data Type</label>
+            <select class="form-control" id="importDataType">
+              <option value="">Choose data type...</option>
+              <option value="students">Student Records</option>
+              <option value="grades">Grades Data</option>
+              <option value="payments">Payment Records</option>
+              <option value="schedule">Class Schedules</option>
+              <option value="enrollment">Enrollment Data</option>
+              <option value="faculty">Faculty Information</option>
+              <option value="courses">Course Information</option>
+              <option value="attendance">Attendance Records</option>
+            </select>
+          </div>
+
+          <div class="file-upload-zone" id="importDropZone">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Drag & Drop your file here</h3>
+            <p class="upload-subtitle">or click to browse from your computer</p>
+            <input type="file" id="importFileInput" accept=".csv,.xlsx,.xls" style="display: none;">
+            <button class="btn btn-secondary" id="browseFilesBtn">
+              <i class="fas fa-folder-open"></i> Browse Files
+            </button>
+          </div>
+
+          <div class="file-info" id="importFileInfo">
+            <div class="file-info-content">
+              <div>
+                <i class="fas fa-file-excel file-icon"></i>
+                <strong id="importFileName" class="file-name"></strong>
+                <span id="importFileSize" class="file-size"></span>
+              </div>
+              <button class="btn btn-secondary" id="removeFileBtn">
+                <i class="fas fa-times"></i> Remove
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group import-options">
+            <label class="form-label">Import Options</label>
+            <div class="options-list">
+              <label class="option-item">
+                <input type="checkbox" id="validateData" checked>
+                <span>Validate data before import (recommended)</span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" id="skipDuplicates">
+                <span>Skip duplicate records automatically</span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" id="createBackup" checked>
+                <span>Create backup before import</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="progress-container" id="importProgress">
+            <div class="progress-bar">
+              <div class="progress-fill" id="importProgressFill">0%</div>
+            </div>
+            <div class="status-message" id="importStatus"></div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="importBtn">
+              <i class="fas fa-download"></i> Start Import
+            </button>
+            <button class="btn btn-secondary" id="showTemplatesBtn">
+              <i class="fas fa-file-download"></i> Download Template
+            </button>
+            <button class="btn btn-secondary" id="viewHistoryBtn">
+              <i class="fas fa-history"></i> View History
+            </button>
+          </div>
+        </div>
+
+        <!-- Template Section -->
+        <div class="card" id="templateSection">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-file-download"></i> Download Import Templates
+            </div>
+          </div>
+          
+          <div class="template-section">
+            <div class="template-card" data-template="students">
+              <i class="fas fa-users"></i>
+              <h4>Student Records</h4>
+              <p>Template for importing student data</p>
+            </div>
+            
+            <div class="template-card" data-template="grades">
+              <i class="fas fa-book"></i>
+              <h4>Grades Data</h4>
+              <p>Template for importing grades</p>
+            </div>
+            
+            <div class="template-card" data-template="payments">
+              <i class="fas fa-wallet"></i>
+              <h4>Payment Records</h4>
+              <p>Template for importing payments</p>
+            </div>
+            
+            <div class="template-card" data-template="schedule">
+              <i class="fas fa-calendar"></i>
+              <h4>Class Schedules</h4>
+              <p>Template for importing schedules</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Export Tab -->
+      <div class="tab-content" id="export-tab">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-upload"></i> Export Data
+            </div>
+          </div>
+          
+          <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <div>
+              <strong>Export Information:</strong>
+              <ul>
+                <li>Choose your preferred export format below</li>
+                <li>Apply filters to export specific data ranges</li>
+                <li>Large exports may take several minutes to process</li>
+                <li>Files will be downloaded directly to your device</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Data Type to Export</label>
+            <select class="form-control" id="exportDataType">
+              <option value="">Choose data type...</option>
+              <option value="students">Student Records</option>
+              <option value="grades">Grades Data</option>
+              <option value="payments">Payment Records</option>
+              <option value="schedule">Class Schedules</option>
+              <option value="enrollment">Enrollment Data</option>
+              <option value="faculty">Faculty Information</option>
+              <option value="courses">Course Information</option>
+              <option value="attendance">Attendance Records</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Export Format</label>
+            <div class="export-options">
+              <div class="export-card" data-format="csv">
+                <i class="fas fa-file-csv"></i>
+                <h4>CSV</h4>
+                <p>Comma-separated values format</p>
+              </div>
+              
+              <div class="export-card" data-format="xlsx">
+                <i class="fas fa-file-excel"></i>
+                <h4>Excel (XLSX)</h4>
+                <p>Microsoft Excel format</p>
+              </div>
+              
+              <div class="export-card" data-format="pdf">
+                <i class="fas fa-file-pdf"></i>
+                <h4>PDF</h4>
+                <p>Portable document format</p>
+              </div>
+              
+              <div class="export-card" data-format="json">
+                <i class="fas fa-file-code"></i>
+                <h4>JSON</h4>
+                <p>JavaScript object notation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters Section -->
+          <div class="filter-section">
+            <div class="filter-header">
+              <h4><i class="fas fa-filter"></i> Advanced Filters (Optional)</h4>
+              <label class="toggle-switch">
+                <input type="checkbox" id="filterToggle">
+                <span class="slider"></span>
+              </label>
+            </div>
+            
+            <div class="filter-content" id="filterContent">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Date From</label>
+                  <input type="date" class="form-control" id="dateFrom">
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Date To</label>
+                  <input type="date" class="form-control" id="dateTo">
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Program/Department</label>
+                  <select class="form-control" id="program">
+                    <option value="">All Programs</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="it">Information Technology</option>
+                    <option value="eng">Engineering</option>
+                    <option value="bus">Business Administration</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Year Level</label>
+                  <select class="form-control" id="yearLevel">
+                    <option value="">All Years</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Status</label>
+                <select class="form-control" id="status">
+                  <option value="">All Statuses</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="graduated">Graduated</option>
+                  <option value="withdrawn">Withdrawn</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export Options -->
+          <div class="form-group export-options">
+            <label class="form-label">Export Options</label>
+            <div class="options-list">
+              <label class="option-item">
+                <input type="checkbox" id="includeHeaders" checked>
+                <span>Include column headers</span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" id="compressFile">
+                <span>Compress file (ZIP format)</span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" id="encryptFile">
+                <span>Password protect export (for sensitive data)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Summary Box -->
+          <div class="summary-box" id="summaryBox">
+            <h4><i class="fas fa-list-check"></i> Export Summary</h4>
+            <div class="summary-item">
+              <span>Data Type:</span>
+              <strong id="summaryDataType">-</strong>
+            </div>
+            <div class="summary-item">
+              <span>Export Format:</span>
+              <strong id="summaryFormat">-</strong>
+            </div>
+            <div class="summary-item">
+              <span>Estimated Records:</span>
+              <strong id="summaryRecords">-</strong>
+            </div>
+            <div class="summary-item">
+              <span>Estimated File Size:</span>
+              <strong id="summarySize">-</strong>
+            </div>
+          </div>
+
+          <div class="progress-container" id="exportProgress">
+            <div class="progress-bar">
+              <div class="progress-fill" id="exportProgressFill">0%</div>
+            </div>
+            <div class="status-message" id="exportStatus"></div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="exportBtn">
+              <i class="fas fa-upload"></i> Start Export
+            </button>
+            <button class="btn btn-secondary" id="previewDataBtn">
+              <i class="fas fa-eye"></i> Preview Data
+            </button>
+            <button class="btn btn-secondary" id="exportHistoryBtn">
+              <i class="fas fa-history"></i> Export History
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard JS -->
+  <script src="modules/js/common.js"></script>
+  <script src="modules/js/data-management.js"></script>
+</body>
+</html>

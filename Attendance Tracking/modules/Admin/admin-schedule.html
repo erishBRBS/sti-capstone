@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STI Bacoor - Admin Schedule Management</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Admin Specific CSS -->
+  <link rel="stylesheet" href="modules/css/admin-schedule.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">Administrator</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="admin-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="admin-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Attendance</span>
+      </a>
+      <a href="admin-manage-students.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Manage Students</span>
+      </a>
+      <a href="admin-schedule.html" class="nav-item active">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="admin-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="admin-settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="admin-add-admin.html" class="nav-item">
+        <i class="fas fa-user-plus"></i>
+        <span>Add New Admin</span>
+      </a>
+      <a href="admin-reset-password.html" class="nav-item">
+        <i class="fas fa-key"></i>
+        <span>Reset Password</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Manage Schedule</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Add Schedule Form -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-plus-circle"></i> Add New Schedule / Event
+          </div>
+        </div>
+        
+        <form id="scheduleForm" class="form-grid">
+          <div class="form-group">
+            <label for="academicYear">Academic Year</label>
+            <input type="text" id="academicYear" class="form-control" placeholder="e.g., 2025-2026" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="eventType">Event Type</label>
+            <select id="eventType" class="form-control" required>
+              <option value="">Select Type</option>
+              <option value="Regular Class">Regular Class</option>
+              <option value="Examination">Examination</option>
+              <option value="Event">University Event</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Suspension">Class Suspension</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="dateStart">Start Date</label>
+            <input type="date" id="dateStart" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dateEnd">End Date</label>
+            <input type="date" id="dateEnd" class="form-control">
+          </div>
+          
+          <div class="form-group">
+            <label for="eventTitle">Title / Reason</label>
+            <input type="text" id="eventTitle" class="form-control" placeholder="Enter event title" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Description / Notes</label>
+            <textarea id="description" class="form-control" placeholder="Enter description"></textarea>
+          </div>
+          
+          <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Add Schedule
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Schedule Filters -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-filter"></i> Filter Schedule
+          </div>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="filterType">Filter by Type</label>
+            <select id="filterType" class="form-control">
+              <option value="">All Types</option>
+              <option value="Regular Class">Regular Class</option>
+              <option value="Examination">Examination</option>
+              <option value="Event">University Event</option>
+              <option value="Holiday">Holiday</option>
+              <option value="Suspension">Class Suspension</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="filterYear">Filter by Academic Year</label>
+            <input type="text" id="filterYear" class="form-control" placeholder="e.g., 2025-2026">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterTitle">Search by Title</label>
+            <input type="text" id="filterTitle" class="form-control" placeholder="Search by title">
+          </div>
+          
+          <div class="form-group">
+            <label for="filterDate">Filter by Date</label>
+            <input type="date" id="filterDate" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar View -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-calendar"></i> Calendar View
+          </div>
+        </div>
+        
+        <div class="calendar-header">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+        
+        <div class="calendar" id="calendar">
+          <!-- Calendar will be generated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Weekly Schedule View -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-calendar-week"></i> Weekly Schedule
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="weeklySchedule">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Event Type</th>
+                <th>Title</th>
+                <th>Academic Year</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="weeklyScheduleBody">
+              <!-- Weekly schedule data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Schedule List -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-list"></i> All Schedules & Events
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table id="scheduleTable">
+            <thead>
+              <tr>
+                <th>Academic Year</th>
+                <th>Type</th>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+              <!-- Schedule data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Event Modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Event</h2>
+      </div>
+      
+      <form id="editForm" class="form-grid">
+        <input type="hidden" id="editIndex">
+        
+        <div class="form-group">
+          <label for="editYear">Academic Year</label>
+          <input type="text" id="editYear" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editType">Event Type</label>
+          <select id="editType" class="form-control" required>
+            <option value="Regular Class">Regular Class</option>
+            <option value="Examination">Examination</option>
+            <option value="Event">University Event</option>
+            <option value="Holiday">Holiday</option>
+            <option value="Suspension">Class Suspension</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="editTitle">Title / Reason</label>
+          <input type="text" id="editTitle" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editStart">Start Date</label>
+          <input type="date" id="editStart" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="editEnd">End Date</label>
+          <input type="date" id="editEnd" class="form-control">
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label for="editDesc">Description</label>
+          <textarea id="editDesc" class="form-control"></textarea>
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Admin Specific JavaScript -->
+  <script src="modules/js/admin-schedule.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize admin schedule
+      new AdminSchedule();
+    });
+  </script>
+</body>
+</html>

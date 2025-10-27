@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Teacher Portal - Announcements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Announcements CSS -->
+  <link rel="stylesheet" href="modules/css/announcements.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Teacher Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="Dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="Schedule.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>My Schedule</span>
+      </a>
+      <a href="Students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>My Students</span>
+      </a>
+      
+      <div class="nav-section">Grades Management</div>
+      <a href="UploadGrades.html" class="nav-item">
+        <i class="fas fa-edit"></i>
+        <span>Upload Grades</span>
+      </a>
+      <a href="ViewGrades.html" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>View Grades</span>
+      </a>
+      
+      <div class="nav-section">Communication</div>
+      <a href="Announcements.html" class="nav-item active">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="Settings.html" class="nav-item">
+        <i class="fas fa-user-cog"></i>
+        <span>Profile Settings</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Announcements</h1>
+        <p>Communicate with your students effectively</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">JD</div>
+          <div>John Doe</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle" style="font-size: 20px;"></i>
+        <div>
+          <strong>Announcement Features:</strong> Create, edit, and manage announcements. Pin important announcements and attach files.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="announcement-tabs">
+          <div class="tab active" data-tab="view">View Announcements</div>
+          <div class="tab" data-tab="create">Create Announcement</div>
+        </div>
+
+        <!-- View Announcements Tab -->
+        <div class="tab-content active" id="viewTab">
+          <div class="card-header">
+            <div class="card-title">All Announcements</div>
+            <div class="filter-section">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Filter by Course</label>
+                  <select class="form-control" id="courseFilter">
+                    <option value="">All Courses</option>
+                    <option value="WEB101">WEB101 - Web Development</option>
+                    <option value="DB201">DB201 - Database Management</option>
+                    <option value="PROG101">PROG101 - Programming Fundamentals</option>
+                    <option value="NET301">NET301 - Network Administration</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Filter by Status</label>
+                  <select class="form-control" id="statusFilter">
+                    <option value="">All Announcements</option>
+                    <option value="active">Active</option>
+                    <option value="draft">Draft</option>
+                    <option value="expired">Expired</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Search</label>
+                  <input type="text" class="form-control" id="searchAnnouncements" placeholder="Search announcements...">
+                </div>
+              </div>
+              
+              <button class="btn btn-primary" id="applyFiltersBtn">
+                <i class="fas fa-filter"></i> Apply Filters
+              </button>
+              <button class="btn btn-secondary" id="resetFiltersBtn">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+            </div>
+          </div>
+          
+          <div id="announcementsList">
+            <!-- Announcements will be populated by JavaScript -->
+          </div>
+          
+          <div class="pagination">
+            <button class="pagination-btn" id="prevPageBtn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div id="paginationNumbers"></div>
+            <button class="pagination-btn" id="nextPageBtn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Create Announcement Tab -->
+        <div class="tab-content" id="createTab">
+          <div class="card-header">
+            <div class="card-title">Create New Announcement</div>
+          </div>
+          
+          <form id="announcementForm">
+            <div class="form-group">
+              <label class="form-label">Title <span class="required">*</span></label>
+              <input type="text" class="form-control" id="announcementTitle" placeholder="Enter announcement title" required>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Course <span class="required">*</span></label>
+                <select class="form-control" id="announcementCourse" required>
+                  <option value="">Select Course</option>
+                  <option value="WEB101">WEB101 - Web Development</option>
+                  <option value="DB201">DB201 - Database Management</option>
+                  <option value="PROG101">PROG101 - Programming Fundamentals</option>
+                  <option value="NET301">NET301 - Network Administration</option>
+                  <option value="all">All Courses</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Priority</label>
+                <select class="form-control" id="announcementPriority">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Content <span class="required">*</span></label>
+              <textarea class="form-control" id="announcementContent" placeholder="Enter announcement content" required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Attachments (Optional)</label>
+              <div class="file-upload-zone" id="dropZone">
+                <div class="upload-icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">Drop files here or click to browse</div>
+                <div class="upload-hint">Supported formats: PDF, DOC, DOCX, JPG, PNG (Max 10MB each)</div>
+                <input type="file" id="fileInput" multiple style="display: none;">
+              </div>
+              
+              <div class="attachment-list" id="attachmentList">
+                <!-- Attachments will be listed here -->
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Schedule Announcement</label>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="scheduleAnnouncement">
+                  <label for="scheduleAnnouncement">Schedule for later</label>
+                </div>
+                
+                <div id="scheduleFields" style="display: none; margin-top: 12px;">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">Publish Date</label>
+                      <input type="date" class="form-control" id="publishDate">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="form-label">Publish Time</label>
+                      <input type="time" class="form-control" id="publishTime">
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="form-label">Expiration Date (Optional)</label>
+                    <input type="date" class="form-control" id="expirationDate">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="checkbox-group">
+              <input type="checkbox" id="pinAnnouncement">
+              <label for="pinAnnouncement">Pin this announcement to top</label>
+            </div>
+            
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-paper-plane"></i> Publish Announcement
+              </button>
+              <button type="button" class="btn btn-secondary" id="saveDraftBtn">
+                <i class="fas fa-save"></i> Save as Draft
+              </button>
+              <button type="button" class="btn btn-secondary" id="resetFormBtn">
+                <i class="fas fa-redo"></i> Reset Form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Details Modal -->
+  <div class="announcement-modal" id="announcementModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Announcement Details</div>
+        <button class="modal-close" id="closeAnnouncementModalBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="announcementModalBody">
+        <!-- Announcement details will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcements JS -->
+  <script src="modules/js/announcements.js"></script>
+</body>
+</html>

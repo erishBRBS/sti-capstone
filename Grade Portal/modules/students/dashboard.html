@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Bacoor Student Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Student Dashboard CSS -->
+  <link rel="stylesheet" href="modules/css/dashboard.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">HY</div>
+      <div class="user-details">
+        <div class="user-name">Hadassa Yap</div>
+        <div class="user-role">IT Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Grades</span>
+      </a>
+      <a href="schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Class Schedule</span>
+      </a>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div style="padding: 14px 24px; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 10px;">
+        Others
+      </div>
+      <a href="hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="about.html" class="nav-item">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item" style="margin-top: 20px;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Dashboard</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">HY</div>
+          <div>Hadassa Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>Welcome back, Hadassa!</h2>
+        <p>Here's your academic summary for today</p>
+      </div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-value">80.00</div>
+          <div class="stat-label">Latest Grade</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon purple-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="stat-value">2</div>
+          <div class="stat-label">Classes Today</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon yellow-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="stat-value">1</div>
+          <div class="stat-label">New Announcements</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Quick Actions</div>
+        </div>
+        
+        <div class="quick-actions">
+          <button class="action-btn" data-action="viewGrades">
+            <div class="action-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <span>View Grades</span>
+          </button>
+          
+          <button class="action-btn" data-action="viewSchedule">
+            <div class="action-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <span>Class Schedule</span>
+          </button>
+          
+          <button class="action-btn" data-action="viewAnnouncements">
+            <div class="action-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <span>Announcements</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Cards -->
+      <div class="content-grid">
+        <!-- Latest Grade Card -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Latest Grade</div>
+            <a href="Grades.html" class="view-all">View All Grades →</a>
+          </div>
+          
+          <div class="grade-card">
+            <div class="grade-subject">Information Assurance & Security</div>
+            <div class="grade-details">Cybersecurity Fundamentals • Joshua Guevarra</div>
+            <div class="grade-value">80.00</div>
+            <div class="grade-term">Finals</div>
+          </div>
+          
+          <div class="grade-date">As of June 16, 2025</div>
+        </div>
+
+        <!-- Classes for Today -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Classes for Today</div>
+            <a href="ClassSchedule.html" class="view-all">View Full Schedule →</a>
+          </div>
+          
+          <div class="schedule-date">Saturday | June 21, 2025</div>
+          <div class="schedule-encoded">Encoded on Jan 13, 2025</div>
+          
+          <div class="schedule-container">
+            <div class="schedule-item">
+              <div class="schedule-time">10:00AM - 1:00PM</div>
+              <div class="schedule-details">
+                <div class="schedule-course">Programming Languages</div>
+                <div class="schedule-section">Room 206 • Junkate Lindon Bernabe</div>
+              </div>
+            </div>
+            
+            <div class="schedule-item">
+              <div class="schedule-time">1:00PM - 3:00PM</div>
+              <div class="schedule-details">
+                <div class="schedule-course">Web Systems & Tech</div>
+                <div class="schedule-section">Room 206 • Enrico Enerlan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest News -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Latest News</div>
+            <a href="Announcements.html" class="view-all">More News →</a>
+          </div>
+          
+          <div class="announcement-item">
+            <div class="announcement-header">
+              <div>
+                <div class="announcement-title">Graduation Day Announcement</div>
+                <div class="announcement-date">Today</div>
+              </div>
+              <span class="announcement-badge">New</span>
+            </div>
+            <div class="announcement-content">
+              In celebration of our Senior High School and Tertiary students' graduation, all office transactions will be suspended tomorrow, July 3, 2025.
+            </div>
+            <div class="announcement-image">
+              <i class="fas fa-image"></i>
+            </div>
+            <div class="announcement-details">
+              Office Transactions will resume on Friday, July 4, 2025: <br>
+              ADMISSIONS OFFICE - 8AM-5PM<br>
+              OTHER OFFICE TRANSACTIONS - 1PM - 5PM<br>
+              Thank you for your kind understanding and support as we honor this milestone with our graduates! <br>
+              Happy Graduation!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Dashboard JS -->
+  <script src="modules/js/dashboard.js"></script>
+</body>
+</html>

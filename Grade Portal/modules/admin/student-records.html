@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Admin Portal - Student Records</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Student Records CSS -->
+  <link rel="stylesheet" href="modules/css/student-records.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Admin Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">AU</div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">STI Admin</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-records.html" class="nav-item active">
+        <i class="fas fa-users"></i>
+        <span>Student Records</span>
+      </a>
+      <a href="grades-management.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        <span>Grades Management</span>
+      </a>
+      <a href="schedule-management.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule Management</span>
+      </a>
+    
+      <div class="nav-section">Communication</div>
+      <a href="announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+
+      <div class="nav-section">Data Management</div>
+      <a href="data-management.html" class="nav-item">
+        <i class="fas fa-database"></i>
+        <span>Data Management</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="settings.html" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Admin Settings</span>
+      </a>
+      <a href="Logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Student Records</h1>
+        <p>Manage student information and academic records</p>
+      </div>
+      
+      <div class="header-actions">
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Quick search..." id="quickSearch">
+        </div>
+        
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="admin-profile">
+          <div class="admin-avatar">AU</div>
+          <div>Admin User</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Alert Messages -->
+      <div id="alertContainer"></div>
+      
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-value">1,254</div>
+          <div class="stat-label">Total Students</div>
+          <div class="stat-change positive">↗ +12 this week</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon green-icon">
+            <i class="fas fa-user-check"></i>
+          </div>
+          <div class="stat-value">1,198</div>
+          <div class="stat-label">Active Students</div>
+          <div class="stat-change positive">95.5% active rate</div>
+        </div>
+      </div>
+
+      <!-- Search and Actions Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Student Records</div>
+          <div class="view-all">Manage student information</div>
+        </div>
+        
+        <div class="card-content">
+          <!-- Search and Actions Row -->
+          <div class="search-actions-row">
+            <div class="search-container full-width">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" class="search-input" placeholder="Search by name, student ID, or email..." id="studentSearch">
+            </div>
+            
+            <div class="action-buttons-group">
+              <button class="btn btn-primary" id="addStudentBtn">
+                <i class="fas fa-user-plus"></i> Add Student
+              </button>
+              <button class="btn btn-secondary" id="bulkActionsBtn">
+                <i class="fas fa-edit"></i> Bulk Actions
+              </button>
+              <button class="btn btn-secondary" id="toggleFiltersBtn">
+                <i class="fas fa-filter"></i> Filters
+              </button>
+            </div>
+          </div>
+          
+          <!-- Filters Panel -->
+          <div class="filters-panel" id="filtersPanel">
+            <div class="filters-grid">
+              <div class="form-group">
+                <label class="form-label">Course</label>
+                <select class="form-control" id="filterCourse">
+                  <option>All Courses</option>
+                  <option>Computer Science</option>
+                  <option>Information Technology</option>
+                  <option>Business Administration</option>
+                  <option>Engineering</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Year Level</label>
+                <select class="form-control" id="filterYear">
+                  <option>All Years</option>
+                  <option>1st Year</option>
+                  <option>2nd Year</option>
+                  <option>3rd Year</option>
+                  <option>4th Year</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Status</label>
+                <select class="form-control" id="filterStatus">
+                  <option>All Status</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                  <option>Graduated</option>
+                  <option>Dropped</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Enrollment Date</label>
+                <select class="form-control" id="filterEnrollment">
+                  <option>All Time</option>
+                  <option>This Year</option>
+                  <option>Last Year</option>
+                  <option>Last 6 Months</option>
+                  <option>Custom Range</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="filter-actions">
+              <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+              <button class="btn btn-secondary" id="clearFiltersBtn">Clear All</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student Records Table -->
+      <div class="card table-card">
+        <div class="card-header">
+          <div class="card-title">Student Records</div>
+          <div class="checkbox-container">
+            <input type="checkbox" id="selectAll">
+            <label for="selectAll">Select All</label>
+          </div>
+        </div>
+        
+        <div class="table-container">
+          <table class="student-table">
+            <thead>
+              <tr>
+                <th class="checkbox-column">
+                  <input type="checkbox" id="selectAllHeader">
+                </th>
+                <th class="student-info-column">Student Info</th>
+                <th class="course-column">Course & Year</th>
+                <th class="status-column">Status</th>
+                <th class="balance-column">Balance</th>
+                <th class="date-column">Enrollment Date</th>
+                <th class="actions-column">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentTableBody">
+              <!-- Student data will be populated here -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+          <div class="pagination-info">
+            <span id="showingCount">1-25</span> of <span id="totalCount">1,254</span> students
+          </div>
+          <div class="pagination-controls">
+            <button class="pagination-btn" id="prevBtn">
+              <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div id="paginationNumbers" class="pagination-numbers">
+              <!-- Page numbers will be generated here -->
+            </div>
+            <button class="pagination-btn" id="nextBtn">
+              Next <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Student Modal -->
+  <div class="modal" id="addStudentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Student</h3>
+        <button class="modal-close" id="closeAddStudentModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addStudentForm" class="student-form">
+          <div class="form-section">
+            <h4 class="section-title">Personal Information</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-control" id="firstName" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-control" id="lastName" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="middleName">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Date of Birth *</label>
+                <input type="date" class="form-control" id="dob" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Gender *</label>
+                <select class="form-control" id="gender" required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Civil Status</label>
+                <select class="form-control" id="civilStatus">
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="divorced">Divorced</option>
+                  <option value="widowed">Widowed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Contact Information</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Address *</label>
+                <textarea class="form-control" id="address" rows="3" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Academic Information</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Student ID *</label>
+                <input type="text" class="form-control" id="studentId" placeholder="Auto-generated if empty">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Course *</label>
+                <select class="form-control" id="course" required>
+                  <option value="">Select Course</option>
+                  <option value="cs">Computer Science</option>
+                  <option value="it">Information Technology</option>
+                  <option value="ba">Business Administration</option>
+                  <option value="eng">Engineering</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Year Level *</label>
+                <select class="form-control" id="yearLevel" required>
+                  <option value="">Select Year</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Enrollment Date *</label>
+                <input type="date" class="form-control" id="enrollmentDate" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Emergency Contact</h4>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Contact Name *</label>
+                <input type="text" class="form-control" id="emergencyName" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Relationship *</label>
+                <input type="text" class="form-control" id="emergencyRelationship" required placeholder="e.g., Parent, Guardian, Spouse">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact Phone *</label>
+                <input type="tel" class="form-control" id="emergencyPhone" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact Email</label>
+                <input type="email" class="form-control" id="emergencyEmail">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Add Student</button>
+            <button type="button" class="btn btn-secondary" id="cancelAddStudent">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Actions Modal -->
+  <div class="modal" id="bulkActionsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Bulk Actions</h3>
+        <button class="modal-close" id="closeBulkActionsModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Select Action</label>
+          <select id="bulkActionType" class="form-control">
+            <option value="">Choose an action</option>
+            <option value="status">Update Status</option>
+            <option value="course">Transfer Course</option>
+            <option value="year">Update Year Level</option>
+            <option value="export">Export Selected</option>
+            <option value="delete">Delete Selected</option>
+          </select>
+        </div>
+        <div id="bulkActionDetails" class="hidden">
+          <!-- Dynamic content based on selected action -->
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="processBulkAction">Apply Action</button>
+          <button class="btn btn-secondary" id="cancelBulkAction">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Records JS -->
+  <script src="modules/js/student-records.js"></script>
+</body>
+</html>

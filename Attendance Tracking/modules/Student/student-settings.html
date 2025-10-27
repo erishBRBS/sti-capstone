@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard - Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/variables.css">
+  <link rel="stylesheet" href="../../shared/css/base.css">
+  <link rel="stylesheet" href="../../shared/css/layout.css">
+  <link rel="stylesheet" href="../../shared/css/components.css">
+  <link rel="stylesheet" href="../../shared/css/utilities.css">
+  
+  <!-- Student Specific CSS -->
+  <link rel="stylesheet" href="modules/css/student-settings.css">
+</head>
+<body>
+  <!-- Modern Alert Container -->
+  <div id="alertContainer" class="alert-container"></div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JC</div>
+      <div class="user-details">
+        <div class="user-name">Juan Dela Cruz</div>
+        <div class="user-role">Student</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="student-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="student-gate-attendance.html" class="nav-item">
+        <i class="fas fa-door-open"></i>
+        <span>Gate Attendance</span>
+      </a>
+      <a href="student-subject-attendance.html" class="nav-item">
+        <i class="fas fa-calendar-check"></i>
+        <span>Subject Attendance</span>
+      </a>
+      <a href="student-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Schedule</span>
+      </a>
+      <a href="student-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <a href="student-settings.html" class="nav-item active">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+      <a href="logout.html" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Settings</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </div>
+        
+        <div class="student-profile">
+          <div class="student-avatar">JC</div>
+          <div>Juan Dela Cruz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+      <!-- Profile Settings -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-user-circle"></i> Profile Settings
+          </div>
+        </div>
+        
+        <div class="profile-picture">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMDAiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHg9IjMwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjMwIiBmaWxsPSIjOTk5Ij5KQzwvdGV4dD48L3N2Zz4=" alt="Profile" class="profile-img" id="profilePreview">
+          <label for="profileUpload" class="profile-overlay">
+            <i class="fas fa-camera"></i>
+            <input type="file" id="profileUpload" accept="image/*" style="display: none;">
+          </label>
+        </div>
+        
+        <form class="form-grid" id="profileForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" value="Juan Dela Cruz">
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" value="juan.delacruz@student.sti.edu">
+          </div>
+          
+          <div class="form-group">
+            <label for="studentId">Student ID</label>
+            <input type="text" id="studentId" class="form-control" value="2023-00123" disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="course">Course</label>
+            <input type="text" id="course" class="form-control" value="BS Computer Science" disabled>
+          </div>
+          
+          <div class="form-group full-width">
+            <div class="action-buttons">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save Profile Changes
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Account Settings -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-sliders-h"></i> Account Settings
+          </div>
+        </div>
+        
+        <form class="form-grid" id="preferencesForm">
+          <div class="form-group">
+            <label for="theme">Theme Preference</label>
+            <select id="theme" class="form-control">
+              <option value="light">Light Theme</option>
+              <option value="dark">Dark Theme</option>
+              <option value="auto">Auto (System Default)</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <div class="toggle-group">
+              <div class="toggle-label">
+                <span class="toggle-text">Desktop Notifications</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="desktopNotifications" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group full-width">
+            <div class="action-buttons">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save Preferences
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Security Settings -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="fas fa-shield-alt"></i> Security Settings
+          </div>
+        </div>
+        
+        <form class="form-grid" id="securityForm">
+          <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" class="form-control" placeholder="Enter current password">
+          </div>
+          
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" class="form-control" placeholder="Enter new password">
+            <div class="password-strength">
+              <div class="password-strength-bar"></div>
+            </div>
+            <div class="password-requirements">
+              <small>Password must contain at least 8 characters with uppercase, lowercase, numbers, and special characters</small>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm new password">
+          </div>
+          
+          <div class="form-group full-width">
+            <div class="action-buttons">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-shield-alt"></i> Update Password
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared JavaScript -->
+  <script src="../../shared/js/utils.js"></script>
+  <script src="../../shared/js/theme.js"></script>
+  <script src="../../shared/js/sidebar.js"></script>
+  
+  <!-- Student Specific JavaScript -->
+  <script src="modules/js/student-settings.js"></script>
+
+  <script>
+    // Initialize shared functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current date
+      Utils.setCurrentDate();
+      
+      // Initialize theme manager
+      new ThemeManager();
+      
+      // Initialize sidebar manager
+      new SidebarManager();
+      
+      // Initialize student settings
+      new StudentSettings();
+    });
+  </script>
+</body>
+</html>

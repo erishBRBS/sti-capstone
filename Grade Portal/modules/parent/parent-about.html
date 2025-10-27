@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Parent Portal - About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="modules/css/base.css">
+  <link rel="stylesheet" href="modules/css/parent-about.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Bacoor</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">MY</div>
+      <div class="user-details">
+        <div class="user-name">Maria Yap</div>
+        <div class="user-role">Parent</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="parent-dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="parent-grades.html" class="nav-item">
+        <i class="fas fa-star"></i>
+        <span>Child's Grades</span>
+      </a>
+      <a href="parent-schedule.html" class="nav-item">
+        <i class="fas fa-clock"></i>
+        <span>Child's Schedule</span>
+      </a>
+      <a href="parent-announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      <div style="padding: 14px 24px; font-size: 12px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-top: 10px;">
+        Others
+      </div>
+      <a href="parent-hmv.html" class="nav-item">
+        <i class="fas fa-bookmark"></i>
+        <span>Mission, Vision & STI Hymn</span>
+      </a>
+      <a href="parent-feedback.html" class="nav-item">
+        <i class="fas fa-comment"></i>
+        <span>Feedback</span>
+      </a>
+      <a href="parent-about.html" class="nav-item active">
+        <i class="fas fa-info-circle"></i>
+        <span>About</span>
+      </a>
+      <a href="parent-faqs.html" class="nav-item">
+        <i class="fas fa-question-circle"></i>
+        <span>FAQs</span>
+      </a>
+      <a href="#" class="nav-item" style="margin-top: 20px;">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>About</h1>
+        <p id="todayDate">Monday, September 11, 2023</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        
+        <div class="notification-btn" id="notificationBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+          <div class="notification-dropdown" id="notificationDropdown">
+            <div class="notification-header">
+              <h3>Notifications</h3>
+            </div>
+            <div class="notification-list" id="notificationList"></div>
+          </div>
+        </div>
+        
+        <div class="parent-profile">
+          <div class="parent-avatar">MY</div>
+          <div>Maria Yap</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <h2>About STI Parent Portal</h2>
+        <p>Stay connected with your child's academic journey</p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Grade Tracking</h3>
+          <p>Monitor your child's academic performance with detailed grade breakdowns</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Class Schedule</h3>
+          <p>Access your child's daily schedule with room assignments and professor information</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3>Announcements</h3>
+          <p>Stay updated with the latest campus news, events, and important notices</p>
+        </div>
+      </div>
+
+      <!-- About Information -->
+      <div class="content-card">
+        <h2>About the Portal</h2>
+        <p>The STI Parent Portal keeps you connected with your child's academic journey in this free and easy-to-use platform. With the STI Parent Portal, you can now:</p>
+        
+        <ul class="info-list">
+          <li>View your child's grades with just a quick tap of a button</li>
+          <li>Know your child's day-to-day class schedule complete with classroom details and professors</li>
+          <li>Get the latest STI news from all over the STI network</li>
+          <li>Access important academic resources and information</li>
+        </ul>
+        
+        <div class="version-info">
+          <div class="version-card">
+            <div class="version-label">Current Version</div>
+            <div class="version-value">1.2.7</div>
+          </div>
+          <div class="version-card">
+            <div class="version-label">Last Updated</div>
+            <div class="version-value">Feb 11, 2021</div>
+          </div>
+          <div class="version-card">
+            <div class="version-label">Developer</div>
+            <div class="version-value">STI College</div>
+          </div>
+        </div>
+        
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+          <p>If you encounter any issues or have questions about the parent portal, please contact:</p>
+          <ul class="info-list">
+            <li><strong>STI Bacoor Registrar:</strong> (046) 417-8745</li>
+            <li><strong>Email:</strong> bacoor@sti.edu</li>
+            <li><strong>Address:</strong> STI Academic Center, Bacoor, Cavite</li>
+          </ul>
+          <p><strong>Office Hours:</strong> Monday to Friday, 8:00 AM - 5:00 PM</p>
+        </div>
+        
+        <h3>Disclaimer</h3>
+        <div class="disclaimer-box">
+          <p>
+            The information contained here is for information purposes only. While we strive to keep all information current and accurate, some data may require further validation from the School Registrar. If you have questions or concerns about any information displayed, please contact the School Registrar for official verification.
+          </p>
+        </div>
+        
+        <button class="print-btn" id="printBtn">
+          <i class="fas fa-print"></i> Print About Information
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Files -->
+  <script src="modules/js/base.js"></script>
+  <script src="modules/js/parent-about.js"></script>
+</body>
+</html>

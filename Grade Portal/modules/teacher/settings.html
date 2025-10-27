@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STI Teacher Portal - Profile Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Settings CSS -->
+  <link rel="stylesheet" href="modules/css/settings.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">STI</div>
+      <div class="logo-text">STI Teacher Portal</div>
+    </div>
+    
+    <div class="user-info">
+      <div class="user-avatar">JD</div>
+      <div class="user-details">
+        <div class="user-name">John Doe</div>
+        <div class="user-role">Faculty Member</div>
+      </div>
+    </div>
+    
+    <div class="nav-menu">
+      <a href="Dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="Schedule.html" class="nav-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>My Schedule</span>
+      </a>
+      <a href="Students.html" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>My Students</span>
+      </a>
+      
+      <div class="nav-section">Grades Management</div>
+      <a href="UploadGrades.html" class="nav-item">
+        <i class="fas fa-edit"></i>
+        <span>Upload Grades</span>
+      </a>
+      <a href="ViewGrades.html" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>View Grades</span>
+      </a>
+      
+      <div class="nav-section">Communication</div>
+      <a href="Announcements.html" class="nav-item">
+        <i class="fas fa-bullhorn"></i>
+        <span>Announcements</span>
+      </a>
+      
+      <div class="nav-section">Others</div>
+      <a href="Settings.html" class="nav-item active">
+        <i class="fas fa-user-cog"></i>
+        <span>Profile Settings</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="page-title">
+        <h1>Profile Settings</h1>
+        <p>Manage your account and preferences</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="teacher-profile">
+          <div class="teacher-avatar">JD</div>
+          <div>John Doe</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle" style="font-size: 20px;"></i>
+        <div>
+          <strong>Profile Management:</strong> Update your personal information, security settings, and preferences.
+        </div>
+      </div>
+
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <div class="avatar-image">JD</div>
+          <button class="avatar-upload" id="avatarUploadBtn">
+            <i class="fas fa-camera"></i>
+          </button>
+          <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <div class="profile-info">
+          <div class="profile-name">John Doe</div>
+          <div class="profile-role">Faculty Member - Computer Science Department</div>
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Courses</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">142</div>
+              <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3.2y</div>
+              <div class="stat-label">Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="profile-tabs">
+          <div class="tab active" data-tab="personal">Personal Information</div>
+          <div class="tab" data-tab="account">Account Settings</div>
+          <div class="tab" data-tab="security">Security</div>
+          <div class="tab" data-tab="notifications">Notifications</div>
+          <div class="tab" data-tab="preferences">Preferences</div>
+        </div>
+
+        <!-- Personal Information Tab -->
+        <div class="tab-content active" id="personalTab">
+          <form id="personalForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name <span class="required">*</span></label>
+                <input type="text" class="form-control" id="firstName" value="John" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Last Name <span class="required">*</span></label>
+                <input type="text" class="form-control" id="lastName" value="Doe" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" class="form-control" id="email" value="john.doe@sti.edu" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" value="+1 (555) 123-4567">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Department <span class="required">*</span></label>
+              <select class="form-control" id="department" required>
+                <option value="cs">Computer Science</option>
+                <option value="it">Information Technology</option>
+                <option value="is">Information Systems</option>
+                <option value="eng">Engineering</option>
+                <option value="math">Mathematics</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Bio</label>
+              <textarea class="form-control" id="bio" rows="4" placeholder="Tell us about yourself...">Experienced computer science educator with over 3 years of teaching experience. Specialized in web development, database systems, and programming fundamentals.</textarea>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Office Hours</label>
+              <textarea class="form-control" id="officeHours" rows="3" placeholder="Enter your office hours...">Monday: 2:00 PM - 4:00 PM
+Wednesday: 10:00 AM - 12:00 PM
+Friday: 1:00 PM - 3:00 PM</textarea>
+            </div>
+            
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Save Changes
+              </button>
+              <button type="button" class="btn btn-secondary" id="resetPersonalBtn">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Account Settings Tab -->
+        <div class="tab-content" id="accountTab">
+          <div class="form-group">
+            <label class="form-label">Username <span class="required">*</span></label>
+            <input type="text" class="form-control" id="username" value="johndoe" required>
+            <div class="help-text">This is your unique identifier for logging in</div>
+          </div>
+          
+          <div class="preference-card">
+            <div class="preference-title">
+              <i class="fas fa-cloud-upload-alt"></i>
+              Data Export
+            </div>
+            <p style="margin-bottom: 16px; color: var(--medium-gray);">Export your course data, grades, and other information</p>
+            <button class="btn btn-secondary" id="exportDataBtn">
+              <i class="fas fa-download"></i> Export My Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div class="tab-content" id="securityTab">
+          <div class="form-group">
+            <label class="form-label">Current Password</label>
+            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+            <div class="security-indicator">
+              <div class="security-strength" id="passwordStrength"></div>
+            </div>
+            <div class="help-text">Use at least 8 characters with a mix of letters, numbers, and symbols</div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+          </div>
+          
+          <div class="btn-group">
+            <button class="btn btn-success" id="updatePasswordBtn">
+              <i class="fas fa-key"></i> Update Password
+            </button>
+          </div>
+          
+          <div class="preference-card" style="margin-top: 30px;">
+            <div class="preference-title">
+              <i class="fas fa-shield-alt"></i>
+              Two-Factor Authentication
+            </div>
+            <p style="margin-bottom: 16px; color: var(--medium-gray);">Add an extra layer of security to your account</p>
+            <div class="checkbox-group">
+              <input type="checkbox" id="twoFactorEnabled">
+              <label for="twoFactorEnabled">Enable Two-Factor Authentication</label>
+            </div>
+            <button class="btn btn-secondary" style="margin-top: 12px;" id="configure2faBtn">
+              <i class="fas fa-cog"></i> Configure 2FA
+            </button>
+          </div>
+          
+          <div class="preference-card" style="margin-top: 20px;">
+            <div class="preference-title">
+              <i class="fas fa-desktop"></i>
+              Active Sessions
+            </div>
+            <p style="margin-bottom: 16px; color: var(--medium-gray);">Manage your active login sessions</p>
+            
+            <div class="sessions-list">
+              <div class="session-item current-session">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-laptop"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-device">Chrome on Windows</div>
+                    <div class="session-meta">Current session • New York, USA</div>
+                  </div>
+                </div>
+                <div style="color: var(--success); font-size: 12px; font-weight: 500;">Active</div>
+              </div>
+              
+              <div class="session-item">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-device">Safari on iPhone</div>
+                    <div class="session-meta">Last active: 2 hours ago • Boston, USA</div>
+                  </div>
+                </div>
+                <button class="session-action" data-session="mobile">
+                  <i class="fas fa-sign-out-alt"></i> Revoke
+                </button>
+              </div>
+              
+              <div class="session-item">
+                <div class="session-info">
+                  <div class="session-icon">
+                    <i class="fas fa-tablet-alt"></i>
+                  </div>
+                  <div class="session-details">
+                    <div class="session-device">Firefox on iPad</div>
+                    <div class="session-meta">Last active: 3 days ago • Miami, USA</div>
+                  </div>
+                </div>
+                <button class="session-action" data-session="tablet">
+                  <i class="fas fa-sign-out-alt"></i> Revoke
+                </button>
+              </div>
+            </div>
+            
+            <button class="btn btn-secondary" style="margin-top: 12px;" id="signOutAllBtn">
+              <i class="fas fa-sign-out-alt"></i> Sign Out All Other Devices
+            </button>
+          </div>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div class="tab-content" id="notificationsTab">
+          <div class="preference-card">
+            <div class="preference-title">
+              <i class="fas fa-bell"></i>
+              Notification Preferences
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Email Notifications</div>
+                <div class="notification-description">Receive notifications via email</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="emailNotifications" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Push Notifications</div>
+                <div class="notification-description">Receive browser push notifications</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="pushNotifications" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="preference-card" style="margin-top: 20px;">
+            <div class="preference-title">
+              <i class="fas fa-envelope"></i>
+              Notification Types
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Grade Submissions</div>
+                <div class="notification-description">When students submit assignments</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="gradeSubmissions" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Announcements</div>
+                <div class="notification-description">New announcements from administration</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="announcementNotifications" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Messages</div>
+                <div class="notification-description">New messages from students or colleagues</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="messageNotifications" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">Schedule Changes</div>
+                <div class="notification-description">Changes to your teaching schedule</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="scheduleNotifications" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            
+            <div class="notification-item">
+              <div class="notification-info">
+                <div class="notification-title">System Updates</div>
+                <div class="notification-description">Important system maintenance notices</div>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="systemNotifications">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preferences Tab -->
+        <div class="tab-content" id="preferencesTab">
+          <div class="preferences-grid">
+            <div class="preference-card">
+              <div class="preference-title">
+                <i class="fas fa-palette"></i>
+                Appearance
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Theme</label>
+                <select class="form-control" id="themePreference">
+                  <option value="light">Light</option>
+                  <option value="dark">Dark</option>
+                  <option value="auto">Auto (System)</option>
+                </select>
+              </div>
+              
+              <div class="checkbox-group">
+                <input type="checkbox" id="compactMode">
+                <label for="compactMode">Compact Mode</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="btn-group">
+            <button class="btn btn-success" id="savePreferencesBtn">
+              <i class="fas fa-save"></i> Save Preferences
+            </button>
+            <button class="btn btn-secondary" id="resetPreferencesBtn">
+              <i class="fas fa-redo"></i> Reset to Defaults
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings JS -->
+  <script src="modules/js/settings.js"></script>
+</body>
+</html>
